@@ -1,0 +1,562 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Домашняя работа — Алина</title>
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+html,body{min-height:100%;font-family:'DejaVu Sans','Open Sans',Arial,sans-serif;color:#3A3532;background-color:#F3EFE9;background-image:url('photo.jpg');background-size:cover;background-position:center;background-repeat:no-repeat;background-attachment:fixed}
+body::before{content:"";position:fixed;inset:0;background:rgba(243,239,233,.4);z-index:0;pointer-events:none}
+h1,h2,h3,h4{font-family:Georgia,'Times New Roman',serif;color:#3A3532;font-weight:normal}
+.muted{color:#6B625C}
+.container{position:relative;z-index:1;max-width:880px;margin:0 auto;padding:32px 20px 80px;display:flex;flex-direction:column;gap:22px}
+.card{background:#FBF8F3;border:1px solid #D9CFC2;border-radius:18px;padding:26px 28px;display:flex;flex-direction:column;gap:16px}
+.card h2{font-size:26px;display:flex;align-items:center;gap:12px}
+.card h3{font-size:20px;display:flex;align-items:center;gap:10px}
+.card p,.card li{font-size:16px;line-height:1.55}
+.accent{color:#C97B5B}
+.accent-dark{color:#A85D3F}
+.divider{height:1px;background:#D9CFC2;width:100%}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;background:#C97B5B;color:#FBF8F3;border:none;border-radius:12px;padding:12px 22px;font-family:inherit;font-size:16px;cursor:pointer;transition:background .15s,transform .1s;align-self:flex-start}
+.btn:hover{background:#A85D3F}
+.btn:active{transform:translateY(1px)}
+.btn:disabled{background:#D9CFC2;color:#6B625C;cursor:not-allowed}
+.screen{display:none}
+.screen.active{display:flex;flex-direction:column;gap:22px}
+.intro-greeting{font-size:34px;font-family:Georgia,serif;color:#A85D3F}
+.time-badge{display:inline-flex;align-items:center;gap:8px;background:#E8C989;color:#3A3532;padding:8px 14px;border-radius:999px;font-size:15px;align-self:flex-start}
+.warn-box{background:#FBF8F3;border:1px dashed #C97B5B;border-radius:14px;padding:14px 18px;display:flex;gap:12px;align-items:flex-start;color:#A85D3F;font-size:15px}
+.task-header{display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:12px}
+.progress-bar{width:100%;height:8px;background:#D9CFC2;border-radius:999px;overflow:hidden}
+.progress-bar>div{height:100%;background:#A9BFA0;width:0%;transition:width .3s}
+.timer{display:inline-flex;align-items:center;gap:8px;background:#FBF8F3;border:1px solid #D9CFC2;padding:6px 12px;border-radius:999px;font-size:15px;font-variant-numeric:tabular-nums}
+.timer.urgent{background:#E8C989;border-color:#C97B5B;color:#A85D3F}
+.question-text{font-size:19px;font-family:Georgia,serif;line-height:1.5;padding:10px 0}
+.choices{display:flex;flex-wrap:wrap;gap:10px}
+.choice-btn{background:#FBF8F3;border:1px solid #D9CFC2;border-radius:12px;padding:10px 18px;font-family:inherit;font-size:16px;cursor:pointer;color:#3A3532;transition:all .15s}
+.choice-btn:hover{border-color:#C97B5B;background:#F3ECE0}
+.choice-btn.selected{background:#C97B5B;color:#FBF8F3;border-color:#C97B5B}
+.choice-btn.correct{background:#A9BFA0;border-color:#A9BFA0;color:#3A3532}
+.choice-btn.wrong{background:#D98B7A;border-color:#D98B7A;color:#3A3532}
+.text-input{font-family:inherit;font-size:17px;padding:10px 14px;border:1px solid #D9CFC2;border-radius:12px;background:#FBF8F3;color:#3A3532;outline:none;width:100%;max-width:420px;transition:border-color .15s}
+.text-input:focus{border-color:#C97B5B}
+.text-input.correct{border-color:#A9BFA0;background:#F3ECE0}
+.text-input.wrong{border-color:#D98B7A;background:#FDF3F0}
+.review-list{display:flex;flex-direction:column;gap:10px}
+.review-item{display:flex;flex-direction:column;gap:4px;padding:10px 14px;border-radius:12px;background:#FBF8F3;border:1px solid #D9CFC2;font-size:15px}
+.review-item.correct{border-left:4px solid #A9BFA0}
+.review-item.wrong{border-left:4px solid #D98B7A}
+.review-item .q{color:#6B625C;font-size:14px}
+.review-item .a{font-size:15px}
+.review-item .a .correct-ans{color:#3A3532;font-weight:bold}
+.review-item .a .your-ans-wrong{color:#A85D3F;text-decoration:line-through;margin-right:6px}
+.review-item .rule{font-size:13px;color:#6B625C;font-style:italic;margin-top:2px}
+.stats-grid{display:flex;flex-direction:column;gap:10px}
+.stat-row{display:flex;justify-content:space-between;align-items:center;padding:10px 14px;background:#FBF8F3;border:1px solid #D9CFC2;border-radius:12px}
+.stat-row .label{font-size:15px}
+.stat-row .value{font-family:Georgia,serif;font-size:18px;color:#A85D3F}
+.stat-row.total{background:#E8C989;border-color:#C97B5B}
+.stat-row.total .value{color:#3A3532;font-size:22px}
+.praise{background:#A9BFA0;border-radius:16px;padding:22px;text-align:center;font-family:Georgia,serif;font-size:22px;color:#3A3532}
+.reminder{background:#E8C989;border-radius:14px;padding:16px 20px;display:flex;gap:12px;align-items:flex-start;font-size:15px}
+.icon-inline{display:inline-flex;width:22px;height:22px;color:#C97B5B;flex-shrink:0}
+@media(max-width:600px){
+  .container{padding:18px 12px 60px}
+  .card{padding:20px 18px}
+  .intro-greeting{font-size:28px}
+  .card h2{font-size:22px}
+  .question-text{font-size:17px}
+}
+</style>
+</head>
+<body>
+<div class="container">
+
+<!-- ========== INTRO ========== -->
+<section class="screen active" id="screen-intro">
+<div class="card">
+  <h1 class="intro-greeting">Hello, Алина,</h1>
+  <div class="divider"></div>
+  <p>Это задания на время.</p>
+  <p>Нужно пройти всё целиком за один раз, <strong>не перезагружая страницу</strong> и не выходя с сайта — иначе все ответы сбросятся, и придётся начинать заново.</p>
+  <div class="time-badge">
+    <svg class="icon-inline" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg>
+    Примерное время выполнения: <strong>около 25 минут</strong>
+  </div>
+  <p>После завершения — сделай скриншот страницы с результатами и отправь в <strong>Telegram</strong>.</p>
+  <div class="warn-box">
+    <svg class="icon-inline" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l10 18H2L12 3z"/><path d="M12 10v5"/><circle cx="12" cy="18" r=".5" fill="currentColor"/></svg>
+    <span>Внимание: если перезагрузишь страницу или уйдёшь с сайта — все ответы сбросятся, и придётся начинать заново.</span>
+  </div>
+  <button class="btn" id="btn-start">
+    Начать
+    <svg class="icon-inline" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="M13 5l7 7-7 7"/></svg>
+  </button>
+</div>
+</section>
+
+<!-- ========== TASK ========== -->
+<section class="screen" id="screen-task">
+<div class="card">
+  <div class="task-header">
+    <h2 id="task-title">Задание</h2>
+    <div class="timer" id="task-timer">
+      <svg class="icon-inline" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg>
+      <span id="timer-text">—</span>
+    </div>
+  </div>
+  <div class="progress-bar"><div id="task-progress"></div></div>
+  <p class="muted" id="task-subtitle" style="font-size:14px"></p>
+  <div id="task-body"></div>
+  <div id="task-actions" style="display:flex;gap:10px;flex-wrap:wrap"></div>
+</div>
+</section>
+
+<!-- ========== REVIEW ========== -->
+<section class="screen" id="screen-review">
+<div class="card">
+  <h2 id="review-title">Разбор</h2>
+  <p class="muted" id="review-subtitle" style="font-size:14px"></p>
+  <div class="review-list" id="review-list"></div>
+  <button class="btn" id="btn-next-task">
+    Дальше
+    <svg class="icon-inline" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="M13 5l7 7-7 7"/></svg>
+  </button>
+</div>
+</section>
+
+<!-- ========== FINAL ========== -->
+<section class="screen" id="screen-final">
+<div class="card">
+  <h2>Итоги</h2>
+  <div class="stats-grid" id="stats-grid"></div>
+</div>
+<div class="card">
+  <div class="praise">Алина, ты молодец, ты сделала домашку!</div>
+  <div class="reminder">
+    <svg class="icon-inline" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="M3 9h18"/><circle cx="8" cy="15" r="1.5"/><path d="M21 15l-5-4-6 5-3-2-4 3"/></svg>
+    <span><strong>Сделай скриншот этой страницы с результатами и отправь его в Telegram.</strong></span>
+  </div>
+</div>
+</section>
+
+</div>
+
+<script>
+/* ================================================================
+   DATA
+   ================================================================ */
+
+// БЛОК 1: A1 Mixed Grammar (22 вопроса)
+const BLOCK1 = [
+  {text:"She ___ a doctor.",options:["is","are","am"],answer:"is",rule:"to be — she → is"},
+  {text:"They ___ from Spain.",options:["is","are","am"],answer:"are",rule:"to be — they → are"},
+  {text:"I ___ happy today.",options:["is","are","am"],answer:"am",rule:"to be — I → am"},
+  {text:"He ___ to work every day.",options:["go","goes"],answer:"goes",rule:"Present Simple — he/she + -s"},
+  {text:"We ___ coffee in the morning.",options:["drink","drinks"],answer:"drink",rule:"Present Simple — we + base form"},
+  {text:"The children ___ in the garden.",options:["plays","play"],answer:"play",rule:"Present Simple — мн.ч. + base form"},
+  {text:"This is ___ book.",options:["my","mine"],answer:"my",rule:"притяжательные прилагательные (my book)"},
+  {text:"That car is ___.",options:["her","hers"],answer:"hers",rule:"притяжательные местоимения (the car is hers)"},
+  {text:"Look at ___ cat!",options:["this","these"],answer:"this",rule:"this — ед.ч., these — мн.ч."},
+  {text:"___ apples are delicious.",options:["That","Those"],answer:"Those",rule:"those — мн.ч. далеко"},
+  {text:"The keys are ___ the table.",options:["on","in","at"],answer:"on",rule:"prepositions of place — on (поверхность)"},
+  {text:"She lives ___ London.",options:["in","at","on"],answer:"in",rule:"prepositions — in (город)"},
+  {text:"Do you have ___ questions?",options:["some","any"],answer:"any",rule:"any — вопросы"},
+  {text:"There isn't ___ milk.",options:["some","any"],answer:"any",rule:"any — отрицания"},
+  {text:"___ is your name?",options:["What","Where","When"],answer:"What",rule:"question words — what для имени"},
+  {text:"___ do you live?",options:["What","Where","When"],answer:"Where",rule:"question words — where для места"},
+  {text:"___ old are you?",options:["How","What","Where"],answer:"How",rule:"how old — возраст"},
+  {text:"___ time is it?",options:["What","How","When"],answer:"What",rule:"what time — время"},
+  {text:"I have two ___.",options:["childs","children"],answer:"children",rule:"мн.ч. — irregular plural"},
+  {text:"She has three ___.",options:["knifes","knives"],answer:"knives",rule:"мн.ч. — f → v + es"},
+  {text:"He ___ at school now.",options:["is","studies"],answer:"is",rule:"to be + at school (место)"},
+  {text:"She ___ English right now.",options:["studies","is studying"],answer:"is studying",rule:"Present Continuous — сейчас"}
+];
+
+// БЛОК 2: Verb Tenses (20 вопросов)
+const BLOCK2 = [
+  {text:"She ___ (work) in a hospital.",answer:"works",rule:"Present Simple — регулярность"},
+  {text:"They ___ (play) football every weekend.",answer:"play",rule:"Present Simple — регулярность, they"},
+  {text:"He ___ (watch) TV now.",answer:"is watching",rule:"Present Continuous — сейчас"},
+  {text:"I ___ (read) a book at the moment.",answer:"am reading",rule:"Present Continuous — сейчас"},
+  {text:"We ___ (go) to Paris last summer.",answer:"went",rule:"Past Simple — прошлое (last summer)"},
+  {text:"She ___ (buy) a new car yesterday.",answer:"bought",rule:"Past Simple — прошлое (yesterday)"},
+  {text:"He ___ (not / like) coffee.",answer:"does not like",rule:"Present Simple отрицание — does not + base (можно doesn't like)"},
+  {text:"They ___ (not / be) at home now.",answer:"are not",rule:"to be отрицание — are not (можно aren't)"},
+  {text:"___ you ___ (speak) French?",answer:"Do you speak",rule:"Present Simple вопрос — Do + подлежащее + глагол"},
+  {text:"___ she ___ (work) here?",answer:"Does she work",rule:"Present Simple вопрос — Does + подлежащее + глагол"},
+  {text:"Last year I ___ (study) at university.",answer:"studied",rule:"Past Simple — прошлое (last year)"},
+  {text:"Yesterday we ___ (have) a meeting.",answer:"had",rule:"Past Simple — had (irregular)"},
+  {text:"Right now she ___ (cook) dinner.",answer:"is cooking",rule:"Present Continuous — сейчас"},
+  {text:"He usually ___ (get up) at 7 a.m.",answer:"gets up",rule:"Present Simple — обычно, he + gets"},
+  {text:"They ___ (live) in Moscow in 2020.",answer:"lived",rule:"Past Simple — конкретный год"},
+  {text:"I ___ (not / see) him last week.",answer:"did not see",rule:"Past Simple отрицание — did not + base (можно didn't see)"},
+  {text:"___ they ___ (visit) London last month?",answer:"Did they visit",rule:"Past Simple вопрос — Did + подлежащее + base"},
+  {text:"She ___ (be) tired now.",answer:"is",rule:"to be — сейчас"},
+  {text:"We ___ (eat) lunch at 1 p.m. every day.",answer:"eat",rule:"Present Simple — расписание"},
+  {text:"He ___ (break) his leg last winter.",answer:"broke",rule:"Past Simple — broke (irregular)"}
+];
+
+// БЛОК 3: Articles Choice (29 вопросов)
+const BLOCK3 = [
+  {text:"I saw ___ dog in the park.",options:["a","an","the","—"],answer:"a",rule:"первое упоминание, исчисляемое ед.ч."},
+  {text:"___ dog was very friendly.",options:["A","An","The","—"],answer:"The",rule:"повторное упоминание"},
+  {text:"___ sun is bright today.",options:["A","An","The","—"],answer:"The",rule:"единственный в мире"},
+  {text:"She plays ___ piano.",options:["a","an","the","—"],answer:"the",rule:"музыкальные инструменты — the"},
+  {text:"He plays ___ football.",options:["a","an","the","—"],answer:"—",rule:"виды спорта — без артикля"},
+  {text:"I go to ___ school by bus.",options:["a","an","the","—"],answer:"—",rule:"учреждения (school как ученик) — без артикля"},
+  {text:"She is in ___ hospital.",options:["a","an","the","—"],answer:"—",rule:"в больнице как пациент — без артикля"},
+  {text:"We had ___ breakfast at 8 a.m.",options:["a","an","the","—"],answer:"—",rule:"приёмы пищи — без артикля"},
+  {text:"He has ___ flu.",options:["a","an","the","—"],answer:"the",rule:"болезни — the flu"},
+  {text:"It's ___ best film I've ever seen.",options:["a","an","the","—"],answer:"the",rule:"превосходная степень — the"},
+  {text:"She lives in ___ United States.",options:["a","an","the","—"],answer:"the",rule:"география — страны во мн.ч. или с 'United' — the"},
+  {text:"They visited ___ Lake Baikal.",options:["a","an","the","—"],answer:"—",rule:"география — озёра без артикля"},
+  {text:"I like ___ music.",options:["a","an","the","—"],answer:"—",rule:"в целом, неисчисляемое — без артикля"},
+  {text:"He is ___ honest man.",options:["a","an","the","—"],answer:"an",rule:"перед гласным звуком — an"},
+  {text:"She bought ___ new laptop.",options:["a","an","the","—"],answer:"a",rule:"первое упоминание"},
+  {text:"___ laptop is very expensive.",options:["A","An","The","—"],answer:"The",rule:"повторное упоминание"},
+  {text:"We travel ___ train.",options:["a","an","the","—","by"],answer:"by",rule:"устойчивые выражения — by train"},
+  {text:"I went to bed early.",options:["a","an","the","—"],answer:"—",rule:"устойчивые выражения — go to bed"},
+  {text:"She is ___ engineer.",options:["a","an","the","—"],answer:"an",rule:"профессия, перед гласным звуком"},
+  {text:"He has ___ headache.",options:["a","an","the","—"],answer:"a",rule:"болезни — a headache"},
+  {text:"It's ___ most interesting book.",options:["a","an","the","—"],answer:"the",rule:"превосходная степень — the most"},
+  {text:"They live in ___ Netherlands.",options:["a","an","the","—"],answer:"the",rule:"география — страны во мн.ч. — the"},
+  {text:"She studies at ___ university.",options:["a","an","the","—"],answer:"a",rule:"учреждения (university как студент) — a"},
+  {text:"I listen to ___ radio every morning.",options:["a","an","the","—"],answer:"the",rule:"средства массовой информации — the radio"},
+  {text:"He is ___ European.",options:["a","an","the","—"],answer:"a",rule:"национальности — a European (согласный звук)"},
+  {text:"She is ___ American.",options:["a","an","the","—"],answer:"an",rule:"национальности — an American (гласный звук)"},
+  {text:"We had ___ wonderful time.",options:["a","an","the","—"],answer:"a",rule:"have a good time — устойчивое выражение"},
+  {text:"It's ___ half past ten.",options:["a","an","the","—"],answer:"—",rule:"время суток — без артикля"},
+  {text:"We go to work ___ car.",options:["a","an","the","—","by"],answer:"by",rule:"устойчивые выражения — by car"}
+];
+
+// БЛОК 4: Articles Input (30 вопросов)
+const BLOCK4 = [
+  {text:"She is ___ doctor.",answer:"a",rule:"профессия, первое упоминание"},
+  {text:"___ doctor helped me yesterday.",answer:"The",rule:"повторное упоминание"},
+  {text:"___ moon is beautiful tonight.",answer:"The",rule:"единственный в мире"},
+  {text:"He plays ___ guitar.",answer:"the",rule:"музыкальные инструменты"},
+  {text:"She loves ___ tennis.",answer:"—",rule:"виды спорта"},
+  {text:"I go to ___ work by bus.",answer:"—",rule:"учреждения (work как сотрудник)"},
+  {text:"He is in ___ prison.",answer:"—",rule:"в тюрьме как заключённый"},
+  {text:"We had ___ dinner late.",answer:"—",rule:"приёмы пищи"},
+  {text:"She has ___ cold.",answer:"a",rule:"болезни — a cold"},
+  {text:"It's ___ worst day ever.",answer:"the",rule:"превосходная степень"},
+  {text:"They live in ___ UK.",answer:"the",rule:"география — аббревиатуры стран — the"},
+  {text:"We visited ___ Mount Everest.",answer:"—",rule:"география — горы без артикля"},
+  {text:"I enjoy ___ classical music.",answer:"—",rule:"в целом, неисчисляемое"},
+  {text:"He is ___ university student.",answer:"a",rule:"первое упоминание"},
+  {text:"___ student is very smart.",answer:"The",rule:"повторное упоминание"},
+  {text:"She is ___ hour late.",answer:"an",rule:"перед гласным звуком"},
+  {text:"I have ___ idea!",answer:"an",rule:"идея, перед гласным звуком"},
+  {text:"They traveled ___ plane.",answer:"by",rule:"устойчивые выражения — by plane"},
+  {text:"I went to ___ church on Sunday.",answer:"—",rule:"учреждения (church как прихожанин)"},
+  {text:"He is ___ architect.",answer:"an",rule:"профессия, перед гласным звуком"},
+  {text:"She has ___ toothache.",answer:"a",rule:"болезни — a toothache"},
+  {text:"It's ___ least expensive option.",answer:"the",rule:"превосходная степень — the least"},
+  {text:"They sailed across ___ Atlantic Ocean.",answer:"the",rule:"география — океаны — the"},
+  {text:"She works at ___ office.",answer:"an",rule:"учреждения (office как рабочее место)"},
+  {text:"I read ___ newspaper this morning.",answer:"the",rule:"средства массовой информации — the newspaper"},
+  {text:"He is ___ Italian.",answer:"an",rule:"национальности — an Italian"},
+  {text:"She is ___ Japanese.",answer:"—",rule:"национальности — японцы, китайцы и др. без артикля"},
+  {text:"We had ___ great holiday.",answer:"a",rule:"have a holiday — устойчивое выражение"},
+  {text:"It's ___ noon.",answer:"—",rule:"время суток — без артикля"},
+  {text:"She is ___ only child.",answer:"the",rule:"уникальность в ситуации — the only"}
+];
+
+/* ================================================================
+   TASK DEFINITIONS
+   ================================================================ */
+
+const TASKS=[
+  {id:"1",title:"БЛОК 1 — Все правила уровня A1",subtitle:"Выбери правильный вариант. 8 секунд на вопрос.",type:"choice",data:BLOCK1,perItem:8},
+  {id:"2",title:"БЛОК 2 — Времена уровня A1",subtitle:"Введи правильную форму глагола. 10 секунд на вопрос.",type:"input-verb",data:BLOCK2,perItem:10},
+  {id:"3",title:"БЛОК 3 — Артикли: выбор варианта",subtitle:"Выбери a / an / the / — или by. 8 секунд на вопрос.",type:"choice",data:BLOCK3,perItem:8},
+  {id:"4",title:"БЛОК 4 — Артикли: вписать самой",subtitle:"Введи a / an / the, by или — (тире). 8 секунд на вопрос.",type:"input-art",data:BLOCK4,perItem:8}
+];
+
+/* ================================================================
+   STATE
+   ================================================================ */
+
+const state={currentTask:-1,results:{}};
+
+/* ================================================================
+   HELPERS
+   ================================================================ */
+
+function shuffle(a){const b=a.slice();for(let i=b.length-1;i>0;i--){const j=Math.floor(Math.random()*(i+1));[b[i],b[j]]=[b[j],b[i]]}return b}
+function showScreen(id){document.querySelectorAll('.screen').forEach(s=>s.classList.remove('active'));document.getElementById(id).classList.add('active');window.scrollTo({top:0,behavior:'smooth'})}
+function norm(s){return(s||"").trim().toLowerCase().replace(/\s+/g," ")}
+function esc(s){return String(s).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]))}
+
+// Нормализация сокращений для блока 2 (времена)
+function normalizeContractions(s){
+  return(s||"")
+    .toLowerCase()
+    .replace(/\bdoesn't\b/g,"does not")
+    .replace(/\bdon't\b/g,"do not")
+    .replace(/\bisn't\b/g,"is not")
+    .replace(/\baren't\b/g,"are not")
+    .replace(/\bwasn't\b/g,"was not")
+    .replace(/\bweren't\b/g,"were not")
+    .replace(/\bhasn't\b/g,"has not")
+    .replace(/\bhaven't\b/g,"have not")
+    .replace(/\bwon't\b/g,"will not")
+    .replace(/\bcan't\b/g,"cannot")
+    .replace(/\s+/g," ")
+    .trim();
+}
+
+// Нормализация артиклей для блока 4 (принимает и -, и —)
+function normalizeArticle(s){
+  let v=(s||"").trim().toLowerCase();
+  if(v==="-"||v==="—"||v==="–")v="—";
+  return v;
+}
+
+const SVG_CHECK='<svg class="icon-inline" viewBox="0 0 24 24" fill="none" stroke="#A9BFA0" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12l5 5L20 7"/></svg>';
+const SVG_CROSS='<svg class="icon-inline" viewBox="0 0 24 24" fill="none" stroke="#D98B7A" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M6 6l12 12"/><path d="M18 6L6 18"/></svg>';
+
+/* ================================================================
+   TIMER
+   ================================================================ */
+
+let _tInterval=null,_tRem=0;
+function startTimer(sec,onEnd){
+  stopTimer();_tRem=sec;
+  const el=document.getElementById('timer-text'),wr=document.getElementById('task-timer');
+  function render(){
+    const m=Math.floor(_tRem/60),s=_tRem%60;
+    el.textContent=m>0?m+":"+String(s).padStart(2,'0'):s+" сек";
+    wr.classList.toggle('urgent',_tRem<=5);
+  }
+  render();
+  _tInterval=setInterval(()=>{
+    _tRem--;
+    if(_tRem<=0){stopTimer();render();if(onEnd)onEnd();}
+    else render();
+  },1000);
+}
+function stopTimer(){if(_tInterval){clearInterval(_tInterval);_tInterval=null}document.getElementById('task-timer').classList.remove('urgent')}
+function setTimerStatic(t){stopTimer();document.getElementById('timer-text').textContent=t}
+
+/* ================================================================
+   TASK LAUNCHER
+   ================================================================ */
+
+function startTask(idx){
+  state.currentTask=idx;
+  const t=TASKS[idx];
+  document.getElementById('task-title').textContent=t.title;
+  document.getElementById('task-subtitle').textContent=t.subtitle;
+  document.getElementById('task-progress').style.width=(idx/TASKS.length*100)+"%";
+  const body=document.getElementById('task-body'),act=document.getElementById('task-actions');
+  body.innerHTML="";act.innerHTML="";
+  if(t.type==="choice")runChoice(t,body,act);
+  else if(t.type==="input-verb")runInputVerb(t,body,act);
+  else if(t.type==="input-art")runInputArt(t,body,act);
+}
+
+function finishTask(results){
+  stopTimer();
+  const t=TASKS[state.currentTask];
+  state.results[t.id]=results;
+  showReview(t,results);
+}
+
+/* ================================================================
+   CHOICE (Блок 1 и 3)
+   ================================================================ */
+
+function runChoice(task,body,act){
+  const data=task.data;let idx=0;const results=[];
+  const qW=document.createElement('div');qW.style.cssText='display:flex;flex-direction:column;gap:12px';body.appendChild(qW);
+  const counter=document.createElement('div');counter.className='muted';counter.style.fontSize='14px';qW.appendChild(counter);
+  const qText=document.createElement('div');qText.className='question-text';qW.appendChild(qText);
+  const choices=document.createElement('div');choices.className='choices';qW.appendChild(choices);
+
+  function show(){
+    if(idx>=data.length){finishTask(results);return}
+    const item=data[idx];
+    counter.textContent=`Вопрос ${idx+1} из ${data.length}`;
+    qText.textContent=item.text;
+    choices.innerHTML="";
+    item.options.forEach(opt=>{
+      const b=document.createElement('button');b.className='choice-btn';b.textContent=opt;
+      b.addEventListener('click',()=>{
+        stopTimer();
+        const isCorrect=opt===item.answer;
+        choices.querySelectorAll('.choice-btn').forEach(btn=>btn.disabled=true);
+        b.classList.add(isCorrect?'correct':'wrong');
+        setTimeout(()=>{
+          results.push({question:item.text,userAnswer:opt,correctAnswer:item.answer,isCorrect,rule:item.rule});
+          idx++;show();
+        },600);
+      });
+      choices.appendChild(b);
+    });
+    document.getElementById('task-progress').style.width=((state.currentTask+idx/data.length)/TASKS.length*100)+"%";
+    startTimer(task.perItem,()=>{
+      choices.querySelectorAll('.choice-btn').forEach(btn=>btn.disabled=true);
+      results.push({question:item.text,userAnswer:"(время вышло)",correctAnswer:item.answer,isCorrect:false,rule:item.rule});
+      setTimeout(()=>{idx++;show()},600);
+    });
+  }
+  show();
+}
+
+/* ================================================================
+   INPUT VERB (Блок 2)
+   ================================================================ */
+
+function runInputVerb(task,body,act){
+  const data=task.data;let idx=0;const results=[];
+  const qW=document.createElement('div');qW.style.cssText='display:flex;flex-direction:column;gap:12px';body.appendChild(qW);
+  const counter=document.createElement('div');counter.className='muted';counter.style.fontSize='14px';qW.appendChild(counter);
+  const qText=document.createElement('div');qText.className='question-text';qW.appendChild(qText);
+  const input=document.createElement('input');input.type='text';input.className='text-input';input.autocomplete='off';input.spellcheck=false;qW.appendChild(input);
+  const btn=document.createElement('button');btn.className='btn';btn.textContent='Ответить';act.appendChild(btn);
+
+  function submit(){
+    stopTimer();
+    const item=data[idx];
+    const userAns=input.value.trim()||"(пусто)";
+    const userNorm=normalizeContractions(userAns);
+    const correctNorm=normalizeContractions(item.answer);
+    const isCorrect=userNorm===correctNorm;
+    input.classList.add(isCorrect?'correct':'wrong');
+    setTimeout(()=>{
+      results.push({question:item.text,userAnswer:userAns,correctAnswer:item.answer,isCorrect,rule:item.rule});
+      idx++;show();
+    },600);
+  }
+  btn.addEventListener('click',submit);
+  input.addEventListener('keydown',e=>{if(e.key==='Enter')submit()});
+
+  function show(){
+    if(idx>=data.length){finishTask(results);return}
+    const item=data[idx];
+    counter.textContent=`Вопрос ${idx+1} из ${data.length}`;
+    qText.textContent=item.text;
+    input.value="";input.className='text-input';input.focus();
+    document.getElementById('task-progress').style.width=((state.currentTask+idx/data.length)/TASKS.length*100)+"%";
+    startTimer(task.perItem,()=>{
+      input.disabled=true;
+      input.classList.add('wrong');
+      results.push({question:item.text,userAnswer:"(время вышло)",correctAnswer:item.answer,isCorrect:false,rule:item.rule});
+      setTimeout(()=>{idx++;show()},600);
+    });
+  }
+  show();
+}
+
+/* ================================================================
+   INPUT ART (Блок 4)
+   ================================================================ */
+
+function runInputArt(task,body,act){
+  const data=task.data;let idx=0;const results=[];
+  const qW=document.createElement('div');qW.style.cssText='display:flex;flex-direction:column;gap:12px';body.appendChild(qW);
+  const counter=document.createElement('div');counter.className='muted';counter.style.fontSize='14px';qW.appendChild(counter);
+  const qText=document.createElement('div');qText.className='question-text';qW.appendChild(qText);
+  const input=document.createElement('input');input.type='text';input.className='text-input';input.autocomplete='off';input.spellcheck=false;input.placeholder="a / an / the / by / —";qW.appendChild(input);
+  const btn=document.createElement('button');btn.className='btn';btn.textContent='Ответить';act.appendChild(btn);
+
+  function submit(){
+    stopTimer();
+    const item=data[idx];
+    const userAns=input.value.trim()||"(пусто)";
+    const userNorm=normalizeArticle(userAns);
+    const correctNorm=normalizeArticle(item.answer);
+    const isCorrect=userNorm===correctNorm;
+    input.classList.add(isCorrect?'correct':'wrong');
+    setTimeout(()=>{
+      results.push({question:item.text,userAnswer:userAns,correctAnswer:item.answer,isCorrect,rule:item.rule});
+      idx++;show();
+    },600);
+  }
+  btn.addEventListener('click',submit);
+  input.addEventListener('keydown',e=>{if(e.key==='Enter')submit()});
+
+  function show(){
+    if(idx>=data.length){finishTask(results);return}
+    const item=data[idx];
+    counter.textContent=`Вопрос ${idx+1} из ${data.length}`;
+    qText.textContent=item.text;
+    input.value="";input.className='text-input';input.focus();
+    document.getElementById('task-progress').style.width=((state.currentTask+idx/data.length)/TASKS.length*100)+"%";
+    startTimer(task.perItem,()=>{
+      input.disabled=true;
+      input.classList.add('wrong');
+      results.push({question:item.text,userAnswer:"(время вышло)",correctAnswer:item.answer,isCorrect:false,rule:item.rule});
+      setTimeout(()=>{idx++;show()},600);
+    });
+  }
+  show();
+}
+
+/* ================================================================
+   REVIEW
+   ================================================================ */
+
+function showReview(task,results){
+  showScreen('screen-review');
+  document.getElementById('review-title').textContent=task.title+" — разбор";
+  const c=results.filter(r=>r.isCorrect).length;
+  document.getElementById('review-subtitle').textContent=`Правильных ответов: ${c} из ${results.length}`;
+  const list=document.getElementById('review-list');list.innerHTML="";
+  results.forEach((r,i)=>{
+    const item=document.createElement('div');item.className='review-item '+(r.isCorrect?'correct':'wrong');
+    const q=document.createElement('div');q.className='q';q.textContent=(i+1)+". "+r.question;item.appendChild(q);
+    const a=document.createElement('div');a.className='a';
+    if(r.isCorrect){
+      a.innerHTML=SVG_CHECK+' <span class="correct-ans">'+esc(r.correctAnswer)+'</span> — верно';
+    }else{
+      a.innerHTML=SVG_CROSS+' <span class="your-ans-wrong">'+esc(r.userAnswer)+'</span> → правильный ответ: <span class="correct-ans">'+esc(r.correctAnswer)+'</span>';
+    }
+    item.appendChild(a);
+    if(r.rule){const rl=document.createElement('div');rl.className='rule';rl.textContent=r.rule;item.appendChild(rl)}
+    list.appendChild(item);
+  });
+}
+
+/* ================================================================
+   FINAL
+   ================================================================ */
+
+function showFinal(){
+  showScreen('screen-final');
+  const grid=document.getElementById('stats-grid');grid.innerHTML="";
+  let totalC=0,totalA=0;
+  TASKS.forEach(t=>{
+    const rs=state.results[t.id]||[];
+    const c=rs.filter(r=>r.isCorrect).length;
+    totalC+=c;totalA+=rs.length;
+    const row=document.createElement('div');row.className='stat-row';
+    row.innerHTML='<span class="label">'+t.title+'</span><span class="value">'+c+' / '+rs.length+'</span>';
+    grid.appendChild(row);
+  });
+  const grand=document.createElement('div');grand.className='stat-row total';
+  grand.innerHTML='<span class="label"><strong>ИТОГО</strong></span><span class="value">'+totalC+' / '+totalA+'</span>';
+  grid.appendChild(grand);
+}
+
+/* ================================================================
+   NAVIGATION
+   ================================================================ */
+
+document.getElementById('btn-start').addEventListener('click',()=>{showScreen('screen-task');startTask(0)});
+document.getElementById('btn-next-task').addEventListener('click',()=>{
+  const next=state.currentTask+1;
+  if(next>=TASKS.length)showFinal();
+  else{showScreen('screen-task');startTask(next)}
+});
+
+window.addEventListener('beforeunload',e=>{
+  if(state.currentTask>=0&&state.currentTask<TASKS.length){e.preventDefault();e.returnValue=""}
+});
+</script>
+</body>
+</html>
