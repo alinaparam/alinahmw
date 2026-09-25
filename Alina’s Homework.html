@@ -1,0 +1,347 @@
+<!doctype html><html><head><meta charset=utf8><meta name=viewport content="width=device-width,initial-scale=1,viewport-fit=cover"><style>:root{color-scheme:light;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}html{scroll-padding-top:env(safe-area-inset-top,0px)}body{margin:0;padding:0;font:14px -apple-system,BlinkMacSystemFont,sans-serif;background:#faf9f5;color:#141413}img{max-width:100%}[hidden]:not([hidden=until-found i]){display:none!important}</style></head><body>
+<meta charset="utf-8">
+<title>Alina’s Homework</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,600;0,9..144,800;1,9..144,500;1,9..144,600&family=Figtree:wght@400;500;600;700&display=swap">
+<style>
+:root{
+  --bg:#ECEFEE;--surface:#FFFFFF;--ink:#1F2328;--muted:#5E676A;--line:#D9DFDD;
+  --teal:#1E6F6A;--teal-soft:#DCEFEC;--mustard:#E3A72F;--mustard-soft:#FBF0D6;--mustard-ink:#835900;
+  --red:#C8553D;--red-soft:#F8E1DB;--good:#1E7F4F;--good-soft:#DDF2E6;--stage:#E2E8E6;
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    color-scheme:dark;
+    --bg:#121716;--surface:#1B2221;--ink:#E8EEEC;--muted:#9AA7A4;--line:#2A3533;
+    --teal:#5BC0B6;--teal-soft:#173430;--mustard:#F0BA4A;--mustard-soft:#3A2E14;--mustard-ink:#F5CD78;
+    --red:#E27A63;--red-soft:#3A1F1A;--good:#4CC98A;--good-soft:#173526;--stage:#202A28;
+  }
+}
+:root[data-theme="dark"]{
+  color-scheme:dark;
+  --bg:#121716;--surface:#1B2221;--ink:#E8EEEC;--muted:#9AA7A4;--line:#2A3533;
+  --teal:#5BC0B6;--teal-soft:#173430;--mustard:#F0BA4A;--mustard-soft:#3A2E14;--mustard-ink:#F5CD78;
+  --red:#E27A63;--red-soft:#3A1F1A;--good:#4CC98A;--good-soft:#173526;--stage:#202A28;
+}
+*{box-sizing:border-box}
+[hidden]{display:none!important}
+body{background:var(--bg);color:var(--ink);font:16px/1.55 "Figtree",system-ui,-apple-system,"Segoe UI",sans-serif;margin:0}
+h1,h2,h3{font-family:"Fraunces",Georgia,serif;line-height:1.08;margin:0;text-wrap:balance}
+button{font:inherit;color:inherit;cursor:pointer}
+button:focus-visible{outline:3px solid var(--mustard);outline-offset:2px}
+
+.bar{position:sticky;top:env(safe-area-inset-top,0px);z-index:20;background:color-mix(in srgb,var(--bg) 88%,transparent);backdrop-filter:blur(10px);border-bottom:1px solid var(--line)}
+.bar-in{max-width:1000px;margin:0 auto;padding:10px 20px;display:flex;align-items:center;justify-content:space-between;gap:12px}
+.bar-t{font-family:"Fraunces",serif;font-weight:800;font-size:18px}
+.prog{font-size:13.5px;font-weight:700;color:var(--muted);font-variant-numeric:tabular-nums;display:flex;gap:10px;align-items:center}
+.prog b{background:var(--mustard-soft);color:var(--mustard-ink);border-radius:999px;padding:4px 11px}
+
+.wrap{max-width:1000px;margin:0 auto;padding-inline:20px;padding-block:0 80px}
+.hello{padding-block:40px 8px}
+.hello h1{font-size:clamp(46px,8vw,80px);font-weight:800;letter-spacing:-.02em}
+.hello h1 em{font-weight:500;color:var(--red)}
+.note{margin-top:18px;background:var(--mustard-soft);border-radius:18px;padding:16px 18px;display:grid;gap:6px;max-width:680px}
+.note p{margin:0;font-weight:600}
+.note p:first-child{color:var(--mustard-ink);font-weight:700}
+
+.sec{padding-top:48px}
+.sec-head{display:flex;align-items:baseline;gap:14px;flex-wrap:wrap;margin-bottom:6px}
+.step{font-family:"Fraunces",serif;font-weight:800;font-size:15px;color:var(--surface);background:var(--ink);border-radius:10px;padding:2px 10px}
+.sec h2{font-size:clamp(30px,4.6vw,42px);font-weight:800;letter-spacing:-.01em}
+.ru{color:var(--muted);font-size:15px;margin:4px 0 18px;max-width:72ch}
+
+.rules{display:grid;grid-template-columns:repeat(auto-fit,minmax(270px,1fr));gap:14px}
+.rule{background:var(--surface);border:1px solid var(--line);border-radius:20px;padding:18px;display:flex;flex-direction:column;gap:8px}
+.rule h3{font-size:26px}
+.rule .form{font-weight:700;background:var(--bg);border-radius:10px;padding:8px 12px;font-size:15px}
+.rule ul{margin:0;padding-left:18px}
+.rule li{margin:4px 0}
+.ex{font-style:italic}
+.ex b{font-style:normal;color:var(--teal)}
+.tag{display:inline-block;font-size:11.5px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;padding:3px 9px;border-radius:6px;background:var(--teal-soft);color:var(--teal);margin-bottom:8px}
+.tag.m{background:var(--mustard-soft);color:var(--mustard-ink)}
+.tag.r{background:var(--red-soft);color:var(--red)}
+
+.block{background:var(--surface);border:1px solid var(--line);border-radius:22px;padding:22px;margin-top:18px}
+.block h3{font-size:24px;font-weight:600;margin-bottom:4px}
+.bl-head{display:flex;justify-content:space-between;align-items:flex-start;gap:12px;flex-wrap:wrap;margin-bottom:14px}
+.bl-head p{margin:2px 0 0;color:var(--muted);max-width:64ch}
+.score{font-size:13px;font-weight:700;color:var(--muted);font-variant-numeric:tabular-nums;white-space:nowrap;padding-top:4px}
+
+.mc{list-style:none;margin:0;padding:0;display:grid;gap:10px;counter-reset:q}
+.mc li{border:1px solid var(--line);border-radius:14px;padding:12px 14px;display:grid;gap:8px;counter-increment:q}
+.mc .s{font-weight:600}
+.mc .s::before{content:counter(q) ". ";color:var(--muted);font-weight:700}
+.blank{display:inline-block;min-width:3.4em;border-bottom:2.5px solid var(--mustard);text-align:center;color:var(--teal);font-weight:700}
+.opts{display:flex;flex-wrap:wrap;gap:8px}
+.opt{border:1.5px solid var(--line);background:var(--bg);border-radius:10px;padding:6px 13px;font-weight:700;font-size:14.5px;transition:border-color .12s}
+.opt:hover:not(:disabled){border-color:var(--teal)}
+.opt:disabled{cursor:default}
+.opt.right{background:var(--good-soft);border-color:var(--good);color:var(--good)}
+.opt.wrong{background:var(--red-soft);border-color:var(--red);color:var(--red)}
+.opt.missed{border-color:var(--good);border-style:dashed;color:var(--good)}
+li.ok{background:color-mix(in srgb,var(--good-soft) 45%,transparent)}
+li.bad{background:color-mix(in srgb,var(--red-soft) 45%,transparent)}
+.why{font-size:14px;color:var(--muted)}
+.why b{color:var(--ink)}
+
+.scr{list-style:none;margin:0;padding:0;display:grid;gap:12px;counter-reset:q}
+.scr li{border:1px solid var(--line);border-radius:14px;padding:12px 14px;display:grid;gap:10px;counter-increment:q}
+.scr .top{display:flex;justify-content:space-between;gap:10px;flex-wrap:wrap;font-weight:600}
+.scr .top span::before{content:counter(q) ". ";color:var(--muted);font-weight:700}
+.ans{min-height:48px;border:2px dashed var(--line);border-radius:12px;padding:6px;display:flex;flex-wrap:wrap;gap:6px;align-items:center}
+.tiles{display:flex;flex-wrap:wrap;gap:6px}
+.tile{border:1.5px solid var(--line);background:var(--surface);border-radius:10px;padding:5px 11px;font-weight:700;box-shadow:0 2px 0 var(--line)}
+.tile:hover:not(:disabled){border-color:var(--teal)}
+.ans .tile{background:var(--mustard-soft);border-color:transparent;box-shadow:none}
+.tile:disabled{cursor:default}
+.scr li.ok .ans{border-style:solid;border-color:var(--good)}
+.scr li.bad .ans{border-style:solid;border-color:var(--red)}
+.btn{border:none;background:var(--ink);color:var(--surface);font-weight:700;padding:8px 16px;border-radius:11px}
+.btn:disabled{opacity:.4;cursor:default}
+.btn.ghost{background:transparent;color:var(--ink);border:1.5px solid var(--line)}
+.row{display:flex;gap:10px;flex-wrap:wrap;align-items:center}
+.fb{font-weight:600;font-size:14px}
+.fb.ok{color:var(--good)}.fb.no{color:var(--red)}
+
+.results{margin-top:48px;background:var(--ink);color:var(--surface);border-radius:26px;padding:26px}
+.results h2{font-size:clamp(30px,5vw,44px)}
+.results .sub{opacity:.75;margin:6px 0 18px}
+.res-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(170px,1fr));gap:10px}
+.res{background:color-mix(in srgb,var(--surface) 10%,transparent);border-radius:16px;padding:14px}
+.res .n{font-family:"Fraunces",serif;font-size:32px;font-weight:800;font-variant-numeric:tabular-nums}
+.res .l{font-size:13px;opacity:.8;font-weight:600}
+.total{margin-top:16px;display:flex;align-items:baseline;gap:14px;flex-wrap:wrap}
+.total .n{font-family:"Fraunces",serif;font-size:64px;font-weight:800;line-height:1;color:var(--mustard)}
+.total .p{font-size:20px;font-weight:700}
+.status{margin-top:12px;font-weight:600;opacity:.85}
+@media (prefers-reduced-motion: reduce){*{transition:none!important}}
+</style>
+
+<div class="bar"><div class="bar-in">
+  <div class="bar-t">Used to / would · Homework</div>
+  <div class="prog">Answered <b id="topProg">0 / 46</b></div>
+</div></div>
+
+<main class="wrap">
+<header class="hello">
+  <h1>Hello, <em>Алина!</em></h1>
+  <div class="note">
+    <p>Не перезагружай эту страницу, иначе ответы сбросятся.</p>
+    <p>После завершения домашней работы пришли мне в Телеграм скрин с результатами.</p>
+  </div>
+</header>
+
+<section class="sec">
+  <div class="sec-head"><span class="step">1</span><h2>The rules</h2></div>
+  <p class="ru">И <b>used to</b>, и <b>would</b> рассказывают о том, что было раньше и больше не происходит. Но есть важная разница.</p>
+  <div class="rules">
+    <div class="rule">
+      <span class="tag">Used to</span>
+      <h3>Habits <i>and</i> states</h3>
+      <div class="form">used to + verb</div>
+      <ul>
+        <li><b>Повторяющиеся действия:</b> <span class="ex">I <b>used to walk</b> to school.</span></li>
+        <li><b>Состояния</b> (be, have, live, like, know, own, believe): <span class="ex">I <b>used to have</b> long hair.</span></li>
+        <li>Можно начинать рассказ: задаёт «картинку» прошлого.</li>
+      </ul>
+    </div>
+    <div class="rule">
+      <span class="tag m">Would</span>
+      <h3>Only repeated actions</h3>
+      <div class="form">would (’d) + verb</div>
+      <ul>
+        <li><b>Только действия</b>, которые повторялись: <span class="ex">Every summer we<b>’d go</b> to the lake.</span></li>
+        <li><b>Не для состояний:</b> <span class="ex">✗ I would have long hair.</span></li>
+        <li>Нужен контекст времени (when I was a kid, every summer…). Типично для ностальгических историй.</li>
+      </ul>
+    </div>
+    <div class="rule">
+      <span class="tag r">Neither</span>
+      <h3>One-time events</h3>
+      <div class="form">Past Simple</div>
+      <ul>
+        <li>Если событие было <b>один раз</b> или указано <b>точное количество раз / срок</b> — только Past Simple.</li>
+        <li><span class="ex">✗ I used to go to Rome last year. → I <b>went</b> to Rome last year.</span></li>
+        <li><span class="ex">✗ I used to live there for 3 years. → I <b>lived</b> there for 3 years.</span></li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<section class="sec">
+  <div class="sec-head"><span class="step">2</span><h2>Exercises</h2></div>
+  <p class="ru">В каждом задании можно ответить только один раз — подумай, прежде чем нажать.</p>
+
+  <div class="block">
+    <div class="bl-head"><div><span class="tag m">Exercise A</span><h3>Action or state?</h3><p>Это повторяющееся действие или состояние? От этого зависит, можно ли использовать would.</p></div><span class="score" id="scA"></span></div>
+    <ol class="mc" id="exA"></ol>
+  </div>
+
+  <div class="block">
+    <div class="bl-head"><div><span class="tag m">Exercise B</span><h3>Can you use “would” here?</h3><p>Можно ли заменить used to на would без ошибки?</p></div><span class="score" id="scB"></span></div>
+    <ol class="mc" id="exB"></ol>
+  </div>
+
+  <div class="block">
+    <div class="bl-head"><div><span class="tag m">Exercise C</span><h3>Used to, both, or neither?</h3><p>Что подходит в пропуск: только used to, оба варианта или ни один (нужен Past Simple)?</p></div><span class="score" id="scC"></span></div>
+    <ol class="mc" id="exC"></ol>
+  </div>
+
+  <div class="block">
+    <div class="bl-head"><div><span class="tag m">Exercise D</span><h3>Build the sentence</h3><p>Нажимай на слова по порядку, чтобы собрать предложение. Нажми на слово в ответе, чтобы вернуть его. Проверить можно один раз.</p></div><span class="score" id="scD"></span></div>
+    <ol class="scr" id="exD"></ol>
+  </div>
+</section>
+
+<section class="results" id="results">
+  <h2>Alina’s results</h2>
+  <p class="sub">Сделай скрин этого блока и пришли мне в Телеграм.</p>
+  <div class="res-grid">
+    <div class="res"><div class="n" id="rA">0 / 12</div><div class="l">A · Action or state?</div></div>
+    <div class="res"><div class="n" id="rB">0 / 12</div><div class="l">B · Can you use would?</div></div>
+    <div class="res"><div class="n" id="rC">0 / 14</div><div class="l">C · Used to, both, neither</div></div>
+    <div class="res"><div class="n" id="rD">0 / 8</div><div class="l">D · Build the sentence</div></div>
+  </div>
+  <div class="total"><span class="n" id="rTot">0 / 46</span><span class="p" id="rPct"></span></div>
+  <div class="status" id="rStatus"></div>
+</section>
+</main>
+
+<script>
+(function(){
+const $ = s => document.querySelector(s);
+const shuffle = a => { a = a.slice(); for (let i = a.length - 1; i > 0; i--){ const j = Math.floor(Math.random() * (i + 1)); [a[i], a[j]] = [a[j], a[i]]; } return a; };
+const TOTAL = { A:12, B:12, C:14, D:8 };
+const score = { A:0, B:0, C:0, D:0 }, done = { A:0, B:0, C:0, D:0 };
+const ALL = 46;
+
+function refresh(){
+  let s = 0, d = 0;
+  for (const k in TOTAL){
+    s += score[k]; d += done[k];
+    $('#r' + k).textContent = `${score[k]} / ${TOTAL[k]}`;
+    $('#sc' + k).textContent = `${score[k]} / ${TOTAL[k]} · answered ${done[k]} / ${TOTAL[k]}`;
+  }
+  $('#topProg').textContent = `${d} / ${ALL}`;
+  $('#rTot').textContent = `${s} / ${ALL}`;
+  $('#rPct').textContent = d ? `${Math.round(s / ALL * 100)}%` : '';
+  $('#rStatus').textContent = d === ALL ? '✓ Homework complete' : `Answered ${d} of ${ALL} — keep going!`;
+}
+window.addEventListener('beforeunload', e => { if (Object.values(done).some(Boolean)){ e.preventDefault(); e.returnValue = ''; } });
+
+/* one-attempt multiple choice */
+function mc(key, listId, items, opts){
+  const list = $(listId);
+  list.innerHTML = items.map((it, n) => `<li data-n="${n}"><div class="s">${it.s.replace('___', '<span class="blank">___</span>')}</div><div class="opts">${opts.map((x, k) => `<button class="opt" data-k="${k}">${x}</button>`).join('')}</div><div class="why" hidden></div></li>`).join('');
+  list.addEventListener('click', e => {
+    const b = e.target.closest('.opt'); if (!b || b.disabled) return;
+    const li = b.closest('li'), it = items[+li.dataset.n], k = +b.dataset.k, good = k === it.a;
+    li.querySelectorAll('.opt').forEach(x => { x.disabled = true; if (+x.dataset.k === it.a && !good) x.classList.add('missed'); });
+    b.classList.add(good ? 'right' : 'wrong'); li.classList.add(good ? 'ok' : 'bad');
+    const bl = li.querySelector('.blank'); if (bl && it.f) bl.textContent = it.f;
+    const w = li.querySelector('.why'); w.hidden = false; w.innerHTML = (good ? '✓ ' : '✗ Правильный ответ: <b>' + opts[it.a] + '</b>. ') + it.why;
+    done[key]++; if (good) score[key]++; refresh();
+  });
+}
+
+/* A — 0 Action, 1 State */
+mc('A', '#exA', [
+  { s:'prefer cats to dogs', a:1, why:'prefer — предпочтение, состояние → только used to.' },
+  { s:'feed the ducks in the park', a:0, why:'Действие → used to или would.' },
+  { s:'go skiing every winter', a:0, why:'Повторяющееся действие → used to или would.' },
+  { s:'have a big dog', a:1, why:'have (владеть) — состояние → только used to.' },
+  { s:'be really good at maths', a:1, why:'be — состояние → только used to.' },
+  { s:'believe in ghosts', a:1, why:'believe — состояние → только used to.' },
+  { s:'bake cookies with my mum on Saturdays', a:0, why:'Действие → used to или would.' },
+  { s:'own a red bicycle', a:1, why:'own — состояние → только used to.' },
+  { s:'help my dad in the garage', a:0, why:'Действие → used to или would.' },
+  { s:'spend hours in the library', a:0, why:'Действие → used to или would.' },
+  { s:'know the names of all the planets', a:1, why:'know — состояние → только used to.' },
+  { s:'swap stickers with my friends', a:0, why:'Действие → used to или would.' },
+], ['Action','State']);
+
+/* B — 0 Yes, 1 No */
+mc('B', '#exB', [
+  { s:'My uncle used to own a boat.', a:1, why:'own — состояние.' },
+  { s:'After dinner, we used to watch cartoons together.', a:0, why:'<i>After dinner, we <b>would</b> watch cartoons together.</i>' },
+  { s:'I used to think adults knew everything.', a:1, why:'think (в значении «считать») — состояние.' },
+  { s:'She used to love horror films.', a:1, why:'love — чувство, состояние.' },
+  { s:'On rainy days, my brother and I used to build castles out of cushions.', a:0, why:'<i>On rainy days, my brother and I <b>would</b> build castles out of cushions.</i>' },
+  { s:'Grandpa used to sing old songs while he was cooking.', a:0, why:'<i>Grandpa <b>would</b> sing old songs while he was cooking.</i>' },
+  { s:'This street used to be very dangerous.', a:1, why:'be — состояние.' },
+  { s:'My parents used to have a tiny flat in the city centre.', a:1, why:'have (владеть) — состояние.' },
+  { s:'We used to take the same bus to school every morning.', a:0, why:'<i>We <b>would</b> take the same bus to school every morning.</i>' },
+  { s:'I used to be terrible at swimming.', a:1, why:'be — состояние.' },
+  { s:'Every New Year, my aunt used to make the same salad.', a:0, why:'<i>Every New Year, my aunt <b>would</b> make the same salad.</i>' },
+  { s:'Before exams, I used to study all night.', a:0, why:'<i>Before exams, I <b>would</b> study all night.</i>' },
+], ['Yes, would works','No, only used to']);
+
+/* C — 0 only used to, 1 both, 2 neither */
+mc('C', '#exC', [
+  { s:'She ___ have curly hair, but now it’s straight.', a:0, f:'used to', why:'have (внешность) — состояние.' },
+  { s:'There ___ be a huge oak tree in front of our school.', a:0, f:'used to', why:'<b>There used to be</b> — would здесь нельзя.' },
+  { s:'At the weekends, we ___ go fishing with my grandfather.', a:1, f:'used to / would', why:'Повторяющееся действие → оба варианта.' },
+  { s:'We ___ move to a new flat three years ago.', a:2, f:'moved', why:'Один раз → <b>We moved</b> three years ago.' },
+  { s:'Every Friday, my dad ___ bring home a big box of doughnuts.', a:1, f:'used to / would', why:'Повторяющееся действие → оба варианта.' },
+  { s:'Our neighbour ___ be a famous singer in the 80s.', a:0, f:'used to', why:'be — состояние.' },
+  { s:'I ___ lose my passport in Rome in 2019.', a:2, f:'lost', why:'Один случай → <b>I lost</b> my passport.' },
+  { s:'He ___ work in that bank for five years.', a:2, f:'worked', why:'Точный срок → <b>He worked</b> there for five years.' },
+  { s:'When I was a teenager, I ___ spend hours on the phone with my best friend.', a:1, f:'used to / would', why:'Повторяющееся действие → оба варианта.' },
+  { s:'My grandparents ___ live on a farm.', a:0, f:'used to', why:'live — состояние.' },
+  { s:'In the evenings, Mum ___ read us fairy tales.', a:1, f:'used to / would', why:'Повторяющееся действие → оба варианта.' },
+  { s:'Last summer, I ___ visit my cousins in Minsk.', a:2, f:'visited', why:'Один раз → <b>I visited</b> my cousins.' },
+  { s:'I ___ know all the words to every Spice Girls song.', a:0, f:'used to', why:'know — состояние.' },
+  { s:'Whenever we visited, Grandma ___ give us sweets and pocket money.', a:1, f:'used to / would', why:'Повторяющееся действие → оба варианта.' },
+], ['only used to','both','neither → Past Simple']);
+
+/* D — build the sentence (one check) */
+(function(){
+  const S = [
+    { t:'Did your parents use to work abroad ?', ru:'Раньше твои родители работали за границей?' },
+    { t:'I didn’t use to eat fish .', ru:'Раньше я не ела рыбу.' },
+    { t:'What did you use to do at weekends ?', ru:'Чем ты раньше занималась по выходным?' },
+    { t:'My grandma would always hide sweets in her bag .', ru:'Бабушка всегда прятала конфеты в сумке.' },
+    { t:'There didn’t use to be so many cars here .', ru:'Раньше здесь не было так много машин.' },
+    { t:'Did she use to be shy at school ?', ru:'Она была стеснительной в школе?' },
+    { t:'Every summer we would sleep in a tent in the garden .', ru:'Каждое лето мы спали в палатке в саду.', alt:['Every summer we would sleep in the garden in a tent .'] },
+    { t:'He never used to wear glasses .', ru:'Раньше он никогда не носил очки.' },
+  ];
+  const state = S.map(x => {
+    const words = x.t.split(' ').map((w, k) => ({ w, k }));
+    let pool = shuffle(words);
+    // make sure the starting order is never already correct
+    while (pool.map(p => p.w).join(' ') === x.t) pool = shuffle(words);
+    return { pool, ans:[], checked:false };
+  });
+  const list = $('#exD');
+  list.innerHTML = S.map((x, n) => `<li data-n="${n}"><div class="top"><span>${x.ru}</span></div><div class="ans"></div><div class="tiles"></div><div class="row"><button class="btn" data-act="check">Check</button><span class="fb"></span></div></li>`).join('');
+  function draw(n){
+    const li = list.children[n], st = state[n], dis = st.checked ? ' disabled' : '';
+    li.querySelector('.ans').innerHTML = st.ans.map((t, i) => `<button class="tile" data-a="${i}"${dis}>${t.w}</button>`).join('');
+    li.querySelector('.tiles').innerHTML = st.pool.map((t, i) => `<button class="tile" data-p="${i}"${dis}>${t.w}</button>`).join('');
+  }
+  S.forEach((_, n) => draw(n));
+  list.addEventListener('click', e => {
+    const li = e.target.closest('li'); if (!li) return; const n = +li.dataset.n, st = state[n];
+    if (st.checked) return;
+    const t = e.target.closest('.tile'), b = e.target.closest('[data-act]'), fb = li.querySelector('.fb');
+    if (t && t.dataset.p !== undefined){ st.ans.push(st.pool.splice(+t.dataset.p, 1)[0]); fb.textContent = ''; draw(n); }
+    else if (t && t.dataset.a !== undefined){ st.pool.push(st.ans.splice(+t.dataset.a, 1)[0]); fb.textContent = ''; draw(n); }
+    else if (b){
+      if (st.pool.length){ fb.className = 'fb no'; fb.textContent = 'Сначала используй все слова.'; return; }
+      const got = st.ans.map(x => x.w).join(' ');
+      const good = [S[n].t, ...(S[n].alt || [])].includes(got);
+      st.checked = true; b.disabled = true; draw(n);
+      li.classList.add(good ? 'ok' : 'bad');
+      fb.className = 'fb ' + (good ? 'ok' : 'no');
+      fb.innerHTML = good ? '✓ Correct!' : '✗ Правильно: <b>' + S[n].t.replace(/ ([?.])$/, '$1') + '</b>';
+      done.D++; if (good) score.D++; refresh();
+    }
+  });
+})();
+
+refresh();
+})();
+</script>
+
+</body></html>
