@@ -1,0 +1,457 @@
+<!doctype html><html><head><meta charset=utf8><meta name=viewport content="width=device-width,initial-scale=1,viewport-fit=cover"><style>:root{color-scheme:light;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}html{scroll-padding-top:env(safe-area-inset-top,0px)}body{margin:0;padding:0;font:14px -apple-system,BlinkMacSystemFont,sans-serif;background:#faf9f5;color:#141413}img{max-width:100%}[hidden]:not([hidden=until-found i]){display:none!important}</style></head><body>
+<meta charset="utf-8">
+<title>Alina’s Homework · Words &amp; Future</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,600;0,9..144,800;1,9..144,500&family=Figtree:wght@400;500;600;700&display=swap">
+<style>
+:root{
+  --bg:#ECEFEE;--surface:#FFFFFF;--ink:#1F2328;--muted:#5E676A;--line:#D9DFDD;
+  --teal:#1E6F6A;--teal-soft:#DCEFEC;--mustard:#E3A72F;--mustard-soft:#FBF0D6;--mustard-ink:#835900;
+  --red:#C8553D;--red-soft:#F8E1DB;--good:#1E7F4F;--good-soft:#DDF2E6;--stage:#E2E8E6;
+  --sea:#2B7A99;--sea-soft:#DCEEF5;--acc:#E26D3A;--acc-soft:#FCE7DC;--olive:#5E8A3A;--olive-soft:#E6F0DC;
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    color-scheme:dark;
+    --bg:#121716;--surface:#1B2221;--ink:#E8EEEC;--muted:#9AA7A4;--line:#2A3533;
+    --teal:#5BC0B6;--teal-soft:#173430;--mustard:#F0BA4A;--mustard-soft:#3A2E14;--mustard-ink:#F5CD78;
+    --red:#E27A63;--red-soft:#3A1F1A;--good:#4CC98A;--good-soft:#173526;--stage:#202A28;
+    --sea:#5FB6D6;--sea-soft:#15303B;--acc:#F08A5A;--acc-soft:#3A2419;--olive:#95C46C;--olive-soft:#1E2E15;
+  }
+}
+:root[data-theme="dark"]{
+  color-scheme:dark;
+  --bg:#121716;--surface:#1B2221;--ink:#E8EEEC;--muted:#9AA7A4;--line:#2A3533;
+  --teal:#5BC0B6;--teal-soft:#173430;--mustard:#F0BA4A;--mustard-soft:#3A2E14;--mustard-ink:#F5CD78;
+  --red:#E27A63;--red-soft:#3A1F1A;--good:#4CC98A;--good-soft:#173526;--stage:#202A28;
+  --sea:#5FB6D6;--sea-soft:#15303B;--acc:#F08A5A;--acc-soft:#3A2419;--olive:#95C46C;--olive-soft:#1E2E15;
+}
+*{box-sizing:border-box}
+[hidden]{display:none!important}
+body{background:var(--bg);color:var(--ink);font:16px/1.55 "Figtree",system-ui,-apple-system,"Segoe UI",sans-serif;margin:0}
+h1,h2,h3{font-family:"Fraunces",Georgia,serif;line-height:1.08;margin:0;text-wrap:balance}
+button{font:inherit;color:inherit;cursor:pointer}
+button:focus-visible,select:focus-visible,input:focus-visible{outline:3px solid var(--mustard);outline-offset:2px}
+svg{display:block;width:100%;height:auto}
+
+.bar{position:sticky;top:env(safe-area-inset-top,0px);z-index:20;background:color-mix(in srgb,var(--bg) 88%,transparent);backdrop-filter:blur(10px);border-bottom:1px solid var(--line)}
+.bar-in{max-width:1000px;margin:0 auto;padding:10px 20px;display:flex;align-items:center;justify-content:space-between;gap:12px}
+.bar-t{font-family:"Fraunces",serif;font-weight:800;font-size:18px}
+.prog{font-size:13.5px;font-weight:700;color:var(--muted);font-variant-numeric:tabular-nums;display:flex;gap:10px;align-items:center}
+.prog b{background:var(--mustard-soft);color:var(--mustard-ink);border-radius:999px;padding:4px 11px}
+
+.wrap{max-width:1000px;margin:0 auto;padding-inline:20px;padding-block:0 80px}
+.hello{padding-block:40px 8px}
+.hello h1{font-size:clamp(46px,8vw,80px);font-weight:800;letter-spacing:-.02em}
+.hello h1 em{font-weight:500;color:var(--red)}
+.note{margin-top:18px;background:var(--mustard-soft);border-radius:18px;padding:16px 18px;display:grid;gap:6px;max-width:680px}
+.note p{margin:0;font-weight:600}
+.note p:first-child{color:var(--mustard-ink);font-weight:700}
+
+.part{margin-top:56px;padding-top:12px;border-top:2px solid var(--ink);display:flex;justify-content:space-between;align-items:baseline;gap:12px;flex-wrap:wrap}
+.part span{font-size:13px;font-weight:700;letter-spacing:.1em;text-transform:uppercase}
+.part b{font-family:"Fraunces",serif;font-size:22px}
+.sec{padding-top:28px}
+.ru{color:var(--muted);font-size:15px;margin:4px 0 12px;max-width:72ch}
+.tag{display:inline-block;font-size:11.5px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;padding:3px 9px;border-radius:6px;background:var(--mustard-soft);color:var(--mustard-ink);margin-bottom:8px}
+.block{background:var(--surface);border:1px solid var(--line);border-radius:22px;padding:22px;margin-top:18px}
+.block h3{font-size:24px;font-weight:600;margin-bottom:4px}
+.bl-head{display:flex;justify-content:space-between;align-items:flex-start;gap:12px;flex-wrap:wrap;margin-bottom:14px}
+.bl-head p{margin:2px 0 0;color:var(--muted);max-width:64ch}
+.score{font-size:13px;font-weight:700;color:var(--muted);font-variant-numeric:tabular-nums;white-space:nowrap;padding-top:4px}
+
+.mc{list-style:none;margin:0;padding:0;display:grid;gap:10px;counter-reset:q}
+.mc li{border:1px solid var(--line);border-radius:14px;padding:12px 14px;display:grid;gap:8px;counter-increment:q}
+.mc .s{font-weight:600}
+.mc .s::before{content:counter(q) ". ";color:var(--muted);font-weight:700}
+.mc .s i{color:var(--muted);font-weight:500}
+.blank{display:inline-block;min-width:3.4em;border-bottom:2.5px solid var(--mustard);text-align:center;color:var(--teal);font-weight:700}
+.opts{display:flex;flex-wrap:wrap;gap:8px}
+.opt{border:1.5px solid var(--line);background:var(--bg);border-radius:10px;padding:6px 13px;font-weight:700;font-size:14.5px;text-align:left}
+.opt:hover:not(:disabled){border-color:var(--teal)}
+.opt:disabled{cursor:default}
+.opt.right{background:var(--good-soft);border-color:var(--good);color:var(--good)}
+.opt.wrong{background:var(--red-soft);border-color:var(--red);color:var(--red)}
+.opt.missed{border-color:var(--good);border-style:dashed;color:var(--good)}
+li.ok,.pcard.ok{background:color-mix(in srgb,var(--good-soft) 45%,transparent)}
+li.bad,.pcard.bad{background:color-mix(in srgb,var(--red-soft) 45%,transparent)}
+.why{font-size:14px;color:var(--muted)}
+.why b{color:var(--ink)}
+
+.pcards{display:grid;grid-template-columns:repeat(auto-fill,minmax(170px,1fr));gap:12px}
+.pcard{border:1px solid var(--line);border-radius:16px;padding:8px 10px 12px;display:flex;flex-direction:column;gap:8px}
+.pcard .pic{background:var(--stage);border-radius:12px;padding:4px}
+.pcard .opt{font-size:13.5px;padding:5px 10px}
+
+.gl{list-style:none;margin:0;padding:0;display:grid;gap:10px;counter-reset:q}
+.gl li{border:1px solid var(--line);border-radius:14px;padding:12px 14px;font-weight:600;line-height:2.1;counter-increment:q}
+.gl li::before{content:counter(q) ". ";color:var(--muted);font-weight:700}
+.gl li b{color:var(--muted)}
+.story{font-size:18px;line-height:2.15;max-width:78ch;margin:0}
+select.g{font:inherit;font-weight:700;color:var(--teal);background:var(--teal-soft);border:1.5px solid transparent;border-radius:9px;padding:1px 4px;max-width:100%}
+.okw{font-weight:700;color:var(--good);background:var(--good-soft);border-radius:7px;padding:1px 7px}
+.badw{font-weight:700;color:var(--red);background:var(--red-soft);border-radius:7px;padding:1px 7px}
+.badw s{opacity:.7}
+.badw b{color:var(--good)}
+.btn{border:none;background:var(--ink);color:var(--surface);font-weight:700;padding:9px 16px;border-radius:11px}
+.btn:disabled{opacity:.4;cursor:default}
+.row{display:flex;gap:10px;flex-wrap:wrap;align-items:center}
+.fb{font-weight:600;font-size:14px}
+.fb.ok{color:var(--good)}.fb.no{color:var(--red)}
+
+.tw{list-style:none;margin:0;padding:0;display:grid;gap:10px;counter-reset:q}
+.tw li{border:1px solid var(--line);border-radius:14px;padding:10px 14px;font-weight:600;line-height:2.2;counter-increment:q}
+.tw li::before{content:counter(q) ". ";color:var(--muted);font-weight:700}
+.tw input{font:inherit;font-weight:700;width:9.5em;max-width:100%;padding:2px 8px;border-radius:9px;border:1.5px solid var(--line);background:var(--bg);color:var(--ink)}
+.tw li.ok input{border-color:var(--good);color:var(--good)}
+.tw li.bad input{border-color:var(--red);color:var(--red)}
+.tw .chk{border:1.5px solid var(--line);background:var(--surface);border-radius:9px;padding:2px 10px;font-weight:700;font-size:13.5px;margin-left:6px}
+.tw .ans{color:var(--good);font-weight:700;margin-left:6px}
+
+.rules{display:grid;grid-template-columns:repeat(auto-fit,minmax(270px,1fr));gap:14px}
+.rule{background:var(--surface);border:1px solid var(--line);border-radius:22px;padding:20px;display:flex;flex-direction:column;gap:10px;border-top:6px solid var(--rc)}
+.rule.will{--rc:var(--sea);--rs:var(--sea-soft)}
+.rule.going{--rc:var(--acc);--rs:var(--acc-soft)}
+.rule.pc{--rc:var(--olive);--rs:var(--olive-soft)}
+.rule h3{font-size:30px;color:var(--rc)}
+.rule .form{font-weight:700;background:var(--rs);border-radius:10px;padding:8px 12px;font-size:15px}
+.use{display:grid;gap:4px}
+.use b{font-size:14.5px}
+.use span{font-style:italic;color:var(--muted);font-size:15px}
+
+.results{margin-top:48px;background:var(--ink);color:var(--surface);border-radius:26px;padding:26px}
+.results h2{font-size:clamp(30px,5vw,44px)}
+.results .sub{opacity:.75;margin:6px 0 18px}
+.res-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(170px,1fr));gap:10px}
+.res{background:color-mix(in srgb,var(--surface) 10%,transparent);border-radius:16px;padding:12px 14px}
+.res .n{font-family:"Fraunces",serif;font-size:28px;font-weight:800;font-variant-numeric:tabular-nums}
+.res .l{font-size:13px;opacity:.8;font-weight:600}
+.total{margin-top:16px;display:flex;align-items:baseline;gap:14px;flex-wrap:wrap}
+.total .n{font-family:"Fraunces",serif;font-size:64px;font-weight:800;line-height:1;color:var(--mustard)}
+.total .p{font-size:20px;font-weight:700}
+.status{margin-top:12px;font-weight:600;opacity:.85}
+</style>
+
+<div class="bar"><div class="bar-in">
+  <div class="bar-t">Words &amp; Future · Homework</div>
+  <div class="prog">Answered <b id="topProg">0</b></div>
+</div></div>
+
+<main class="wrap">
+<header class="hello">
+  <h1>Hello, <em>Алина!</em></h1>
+  <div class="note">
+    <p>Не перезагружай эту страницу, иначе ответы сбросятся.</p>
+    <p>После завершения домашней работы пришли мне в Телеграм скрин с результатами.</p>
+  </div>
+</header>
+
+<div class="part"><span>Part 1</span><b>Vocabulary</b></div>
+<p class="ru" style="margin-top:12px">В каждом задании ответить можно только один раз — подумай, прежде чем нажать.</p>
+
+<section class="sec">
+  <div class="block"><div class="bl-head"><div><span class="tag">Exercise A</span><h3>What is it?</h3><p>Посмотри на картинку и выбери слово.</p></div><span class="score" id="scA"></span></div><div class="pcards" id="exA"></div></div>
+  <div class="block"><div class="bl-head"><div><span class="tag">Exercise B</span><h3>Fabrics &amp; patterns</h3><p>Из чего это сделано и какой узор?</p></div><span class="score" id="scB"></span></div><ol class="mc" id="exB"></ol></div>
+  <div class="block"><div class="bl-head"><div><span class="tag">Exercise C</span><h3>Describe the person</h3><p>Прочитай ситуацию и выбери слово, которое подходит лучше всего.</p></div><span class="score" id="scC"></span></div><ol class="mc" id="exC"></ol></div>
+  <div class="block"><div class="bl-head"><div><span class="tag">Exercise D</span><h3>Men, feelings &amp; expectations</h3><p>Выбери выражение для каждого пропуска. Проверить можно один раз, поэтому сначала заполни всё.</p></div><span class="score" id="scD"></span></div><ol class="gl" id="exD"></ol><div class="row" style="margin-top:14px"><button class="btn" id="chkD">Check</button><span class="fb" id="fbD"></span></div></div>
+  <div class="block"><div class="bl-head"><div><span class="tag">Exercise E</span><h3>Breaking news</h3><p>Прочитай новости и заполни пропуски. Проверить можно один раз.</p></div><span class="score" id="scE"></span></div><p class="story" id="exE"></p><div class="row" style="margin-top:14px"><button class="btn" id="chkE">Check</button><span class="fb" id="fbE"></span></div></div>
+  <div class="block"><div class="bl-head"><div><span class="tag">Exercise F</span><h3>Travel</h3><p>Выбери слово или выражение.</p></div><span class="score" id="scF"></span></div><ol class="mc" id="exF"></ol></div>
+  <div class="block"><div class="bl-head"><div><span class="tag">Exercise G</span><h3>Money, work &amp; life</h3><p>Выбери слово.</p></div><span class="score" id="scG"></span></div><ol class="mc" id="exG"></ol></div>
+  <div class="block"><div class="bl-head"><div><span class="tag">Exercise H</span><h3>Write the word</h3><p>Впиши одно слово и нажми Check. Первая буква — подсказка. Одна попытка!</p></div><span class="score" id="scH"></span></div><ol class="tw" id="exH"></ol></div>
+</section>
+
+<div class="part"><span>Part 2</span><b>Talking about the future</b></div>
+<section class="sec">
+  <p class="ru">Три способа говорить о будущем. Главный вопрос: <b>когда</b> принято решение и <b>насколько</b> всё уже организовано? Подглядывай в правило, когда делаешь задания.</p>
+  <div class="rules">
+    <div class="rule will"><h3>will</h3><div class="form">will / won’t + verb</div>
+      <div class="use"><b>Решение в момент речи</b><span>“I’m freezing.” — “I’ll close the window.”</span></div>
+      <div class="use"><b>Прогноз-мнение</b> (I think, probably, I’m sure)<span>I think there will be more droughts in the future.</span></div>
+      <div class="use"><b>Обещание, предложение помощи</b><span>I’ll help you with the loan application. I won’t tell anyone.</span></div></div>
+    <div class="rule going"><h3>be going to</h3><div class="form">am / is / are going to + verb</div>
+      <div class="use"><b>План, намерение — решили заранее</b><span>I’m going to reduce my screen time this year.</span></div>
+      <div class="use"><b>Прогноз по тому, что видим сейчас</b><span>Look at those clouds! It’s going to rain.</span></div></div>
+    <div class="rule pc"><h3>Present Continuous</h3><div class="form">am / is / are + verb-ing</div>
+      <div class="use"><b>Договорённость: есть время, место, люди, билеты</b><span>I’m meeting my financial advisor on Friday at 10.</span></div>
+      <div class="use"><b>«Это уже в календаре»</b><span>We’re flying to Lisbon on Sunday. The tickets are booked.</span></div></div>
+  </div>
+  <div class="block"><div class="bl-head"><div><span class="tag">Exercise I</span><h3>Which future?</h3><p>Выбери форму. После ответа появится объяснение.</p></div><span class="score" id="scI"></span></div><ol class="mc" id="exI"></ol></div>
+  <div class="block"><div class="bl-head"><div><span class="tag">Exercise J</span><h3>Mini-dialogues</h3><p>Выбери вариант, который звучит естественно. Проверить можно один раз.</p></div><span class="score" id="scJ"></span></div><ol class="gl" id="exJ"></ol><div class="row" style="margin-top:14px"><button class="btn" id="chkJ">Check</button><span class="fb" id="fbJ"></span></div></div>
+  <div class="block"><div class="bl-head"><div><span class="tag">Exercise K</span><h3>Spot the mistake</h3><p>Предложение правильное или с ошибкой?</p></div><span class="score" id="scK"></span></div><ol class="mc" id="exK"></ol></div>
+</section>
+
+<section class="results">
+  <h2>Alina’s results</h2>
+  <p class="sub">Сделай скрин этого блока и пришли мне в Телеграм.</p>
+  <div class="res-grid" id="resGrid"></div>
+  <div class="total"><span class="n" id="rTot"></span><span class="p" id="rPct"></span></div>
+  <div class="status" id="rStatus"></div>
+</section>
+</main>
+
+<script>
+(function(){
+const $ = s => document.querySelector(s);
+const shuffle = a => { a = a.slice(); for (let i = a.length - 1; i > 0; i--){ const j = Math.floor(Math.random() * (i + 1)); [a[i], a[j]] = [a[j], a[i]]; } return a; };
+const sv = inner => `<svg viewBox="0 0 120 90" role="img" aria-hidden="true">${inner}</svg>`;
+const INK = '#1F2328';
+
+/* ---------- scoring ---------- */
+const EX = { A:'What is it?', B:'Fabrics & patterns', C:'Describe the person', D:'Feelings & expectations', E:'Breaking news', F:'Travel', G:'Money, work & life', H:'Write the word', I:'Which future?', J:'Mini-dialogues', K:'Spot the mistake' };
+const TOTAL = {}, score = {}, done = {};
+Object.keys(EX).forEach(k => { score[k] = 0; done[k] = 0; });
+function refresh(){
+  let s = 0, d = 0, t = 0;
+  Object.keys(EX).forEach(k => { s += score[k]; d += done[k]; t += TOTAL[k] || 0; const el = $('#sc' + k); if (el) el.textContent = `${score[k]} / ${TOTAL[k]}`; const r = $('#r' + k); if (r) r.textContent = `${score[k]} / ${TOTAL[k]}`; });
+  $('#topProg').textContent = `${d} / ${t}`; $('#rTot').textContent = `${s} / ${t}`;
+  $('#rPct').textContent = d ? `${Math.round(s / t * 100)}%` : '';
+  $('#rStatus').textContent = d === t ? '✓ Homework complete' : `Answered ${d} of ${t} — keep going!`;
+}
+window.addEventListener('beforeunload', e => { if (Object.values(done).some(Boolean)){ e.preventDefault(); e.returnValue = ''; } });
+
+/* one-attempt multiple choice. items: {s, o:[correct first, ...distractors] | a index for fixed opts, f, why} */
+function mc(key, listId, items, fixed){
+  TOTAL[key] = items.length;
+  const list = $(listId);
+  const prepared = items.map(it => {
+    if (fixed) return { ...it, opts: fixed, ans: it.a };
+    const opts = shuffle(it.o); return { ...it, opts, ans: opts.indexOf(it.o[0]) };
+  });
+  list.innerHTML = prepared.map((it, n) => `<li data-n="${n}"><div class="s">${it.s.replace('___', '<span class="blank">___</span>')}</div><div class="opts">${it.opts.map((x, k) => `<button class="opt" data-k="${k}">${x}</button>`).join('')}</div><div class="why" hidden></div></li>`).join('');
+  list.addEventListener('click', e => {
+    const b = e.target.closest('.opt'); if (!b || b.disabled) return;
+    const li = b.closest('li'), it = prepared[+li.dataset.n], good = +b.dataset.k === it.ans;
+    li.querySelectorAll('.opt').forEach(x => { x.disabled = true; if (+x.dataset.k === it.ans && !good) x.classList.add('missed'); });
+    b.classList.add(good ? 'right' : 'wrong'); li.classList.add(good ? 'ok' : 'bad');
+    const bl = li.querySelector('.blank'); if (bl) bl.textContent = it.f || it.opts[it.ans];
+    if (it.why || !good){ const w = li.querySelector('.why'); w.hidden = false; w.innerHTML = (good ? '✓ ' : '✗ Правильно: <b>' + it.opts[it.ans] + '</b>. ') + (it.why || ''); }
+    done[key]++; if (good) score[key]++; refresh();
+  });
+}
+/* one-check dropdown gaps. g = {o:[...], a} */
+function gaps(key, el, lines, btn, fb){
+  let gid = 0; const all = [];
+  const sel = g => { const id = el.id + 'g' + gid++; all.push({ id, ...g }); return `<select class="g" id="${id}" aria-label="choose"><option value="">…</option>${g.o.map((x, k) => `<option value="${k}">${x}</option>`).join('')}</select>`; };
+  const html = lines.map(p => p.map(x => typeof x === 'string' ? x : sel(x)).join(''));
+  el.innerHTML = el.tagName === 'OL' ? html.map(h => `<li>${h}</li>`).join('') : html.join('');
+  TOTAL[key] = all.length;
+  btn.addEventListener('click', () => {
+    const empty = all.filter(g => document.getElementById(g.id).value === '').length;
+    if (empty){ fb.className = 'fb no'; fb.textContent = `Заполни все пропуски (осталось ${empty}), потом проверяй.`; return; }
+    all.forEach(g => {
+      const s = document.getElementById(g.id), v = +s.value, w = document.createElement('span');
+      if (v === g.a){ w.className = 'okw'; w.textContent = g.o[g.a]; score[key]++; }
+      else { w.className = 'badw'; w.innerHTML = `<s>${g.o[v]}</s> → <b>${g.o[g.a]}</b>`; }
+      s.replaceWith(w);
+    });
+    done[key] = all.length; btn.disabled = true; refresh();
+    fb.className = 'fb ' + (score[key] === all.length ? 'ok' : 'no'); fb.textContent = `${score[key]} / ${all.length} correct.`;
+  });
+}
+const G = (a, ...o) => ({ o, a });
+
+/* ---------- A: pictures ---------- */
+const sw = inner => `<rect x="20" y="10" width="80" height="70" rx="6" fill="#F4EFE6" stroke="${INK}" stroke-width="2"/>${inner}`;
+const PIC = {
+  iron:`<path d="M14 66 Q16 40 50 36 H100 V66Z" fill="#6F9BD1" stroke="${INK}" stroke-width="2.5"/><path d="M44 36 Q46 16 70 16 H96 V36" fill="none" stroke="${INK}" stroke-width="5"/><rect x="14" y="66" width="86" height="6" fill="#C9CED0"/><g stroke="#9AA7A4" stroke-width="2" stroke-linecap="round"><path d="M30 80 q4 -4 0 -8 M46 82 q4 -4 0 -8 M62 82 q4 -4 0 -8"/></g>`,
+  hairdryer:`<rect x="26" y="26" width="58" height="30" rx="15" fill="#E26D3A"/><circle cx="84" cy="41" r="15" fill="#C8553D"/><rect x="36" y="50" width="16" height="34" rx="6" fill="#E26D3A"/><g stroke="#9AA7A4" stroke-width="3" stroke-linecap="round"><path d="M104 32 h10 M104 41 h14 M104 50 h10"/></g><rect x="40" y="58" width="8" height="6" rx="2" fill="${INK}"/>`,
+  dryer:`<rect x="24" y="8" width="72" height="78" rx="6" fill="#EEF2F1" stroke="${INK}" stroke-width="2.5"/><rect x="24" y="8" width="72" height="14" rx="6" fill="#C9CED0"/><circle cx="84" cy="15" r="3" fill="${INK}"/><circle cx="60" cy="54" r="24" fill="#DCEEF5" stroke="${INK}" stroke-width="3"/><path d="M44 60 q8 -14 20 -6 q10 6 12 -4" stroke="#E26D3A" stroke-width="5" fill="none"/><path d="M46 48 q10 6 20 -2" stroke="#5E8A3A" stroke-width="5" fill="none"/><g stroke="#E3A72F" stroke-width="2" stroke-linecap="round"><path d="M100 30 q4 -4 0 -8 M108 34 q4 -4 0 -8"/></g>`,
+  kettle:`<path d="M34 30 H82 L88 80 H28Z" fill="#9AA7A4" stroke="${INK}" stroke-width="2.5"/><path d="M82 36 Q104 38 100 64 Q98 72 88 72" stroke="${INK}" stroke-width="5" fill="none"/><path d="M34 34 L18 22" stroke="${INK}" stroke-width="5"/><rect x="42" y="22" width="32" height="8" rx="3" fill="${INK}"/><rect x="24" y="80" width="68" height="6" rx="2" fill="${INK}"/><g stroke="#C9CED0" stroke-width="2.5" stroke-linecap="round" fill="none"><path d="M14 14 q-4 -5 0 -10 M22 10 q-4 -5 0 -10"/></g>`,
+  oven:`<rect x="18" y="10" width="84" height="74" rx="4" fill="#E6E9E8" stroke="${INK}" stroke-width="2.5"/><rect x="18" y="10" width="84" height="14" rx="4" fill="#C9CED0"/><g fill="${INK}"><circle cx="32" cy="17" r="3"/><circle cx="46" cy="17" r="3"/><circle cx="88" cy="17" r="3"/></g><rect x="28" y="32" width="64" height="44" rx="4" fill="#3A3F47"/><rect x="34" y="38" width="52" height="32" rx="3" fill="#E26D3A" opacity=".55"/><ellipse cx="60" cy="60" rx="16" ry="5" fill="#C98A4B"/><rect x="40" y="28" width="40" height="3" rx="1.5" fill="${INK}"/>`,
+  cap:`<path d="M24 60 Q24 22 60 22 Q92 22 94 58Z" fill="#2B7A99"/><path d="M92 58 Q112 58 114 66 Q100 70 80 64Z" fill="#1E5E78"/><rect x="24" y="56" width="70" height="8" rx="4" fill="#1E5E78"/><circle cx="60" cy="22" r="4" fill="#1E5E78"/><path d="M60 24 V56 M42 28 Q38 44 40 58 M78 28 Q82 44 80 58" stroke="#1E5E78" stroke-width="1.5" fill="none"/>`,
+  spaceship:`<path d="M60 6 Q80 26 78 60 H42 Q40 26 60 6Z" fill="#EEF2F1" stroke="${INK}" stroke-width="2.5"/><circle cx="60" cy="34" r="8" fill="#5FB6D6" stroke="${INK}" stroke-width="2"/><path d="M42 44 L28 66 H42Z M78 44 L92 66 H78Z" fill="#C8553D"/><path d="M48 60 Q52 80 60 86 Q68 80 72 60Z" fill="#E3A72F"/><g fill="#fff"><circle cx="14" cy="16" r="1.5"/><circle cx="104" cy="22" r="1.5"/><circle cx="98" cy="76" r="1.5"/></g>`,
+  cockroach:`<g stroke="#5A3A22" stroke-width="2.5" stroke-linecap="round" fill="none"><path d="M44 36 L28 26 M44 46 L24 46 M44 56 L28 68 M76 36 L92 26 M76 46 L96 46 M76 56 L92 68 M54 22 Q46 8 34 6 M66 22 Q74 8 86 6"/></g><ellipse cx="60" cy="50" rx="18" ry="30" fill="#8A5A36"/><path d="M60 22 V80" stroke="#5A3A22" stroke-width="2"/><ellipse cx="60" cy="24" rx="10" ry="6" fill="#5A3A22"/>`,
+  shirt:`<path d="M40 10 L24 18 L10 36 L24 44 L30 36 V84 H90 V36 L96 44 L110 36 L96 18 L80 10 Q70 18 60 18 Q50 18 40 10Z" fill="#DCEEF5" stroke="${INK}" stroke-width="2.5"/><path d="M40 10 L52 26 L60 18 L68 26 L80 10" fill="none" stroke="${INK}" stroke-width="2.5"/><path d="M60 24 V84" stroke="${INK}" stroke-width="1.5"/><g fill="${INK}"><circle cx="64" cy="36" r="2"/><circle cx="64" cy="50" r="2"/><circle cx="64" cy="64" r="2"/></g>`,
+  skirt:`<rect x="40" y="10" width="40" height="10" rx="2" fill="#9B4B6E"/><path d="M40 20 H80 L100 82 H20Z" fill="#C0608A"/><path d="M50 20 L40 82 M60 20 V82 M70 20 L80 82" stroke="#9B4B6E" stroke-width="2"/>`,
+  checked: sw(`<g fill="#C8553D" opacity=".75"><rect x="20" y="10" width="80" height="12"/><rect x="20" y="34" width="80" height="12"/><rect x="20" y="58" width="80" height="12"/><rect x="28" y="10" width="12" height="70"/><rect x="52" y="10" width="12" height="70"/><rect x="76" y="10" width="12" height="70"/></g>`),
+  spotted: sw(`<g fill="#2B7A99">${[[32,22],[56,22],[80,22],[44,38],[68,38],[92,38],[32,54],[56,54],[80,54],[44,70],[68,70]].map(([x,y]) => `<circle cx="${x}" cy="${y}" r="5"/>`).join('')}</g>`),
+  striped: sw(`<g fill="#5E8A3A">${[14,28,42,56,70].map(y => `<rect x="20" y="${y}" width="80" height="7"/>`).join('')}</g>`),
+  floral: sw(`${[[38,28],[78,26],[56,52],[34,66],[84,64]].map(([x,y]) => `<g transform="translate(${x} ${y})"><circle cx="0" cy="-6" r="5" fill="#E78AA8"/><circle cx="6" cy="0" r="5" fill="#E78AA8"/><circle cx="0" cy="6" r="5" fill="#E78AA8"/><circle cx="-6" cy="0" r="5" fill="#E78AA8"/><circle cx="0" cy="0" r="3.5" fill="#E3A72F"/></g>`).join('')}`),
+  plain: `<rect x="20" y="10" width="80" height="70" rx="6" fill="#6F9BD1" stroke="${INK}" stroke-width="2"/>`,
+  pavement:`<rect width="120" height="90" fill="#DCEEF5"/><rect y="46" width="120" height="44" fill="#7D8597"/><path d="M0 70 H120" stroke="#fff" stroke-width="2.5" stroke-dasharray="10 8"/><rect y="34" width="120" height="14" fill="#E3A72F"/><path d="M0 48 H120" stroke="${INK}" stroke-width="2"/><g stroke="#B8872A" stroke-width="1.5"><path d="M20 34 V48 M44 34 V48 M68 34 V48 M92 34 V48"/></g><path d="M100 6 V34" stroke="${INK}" stroke-width="2"/><circle cx="100" cy="10" r="6" fill="#E26D3A"/>`,
+};
+const A_ITEMS = [
+  ['kettle',['kettle','iron','oven']], ['iron',['iron','dryer','hair dryer']], ['hairdryer',['hair dryer','kettle','iron']],
+  ['dryer',['dryer','oven','kettle']], ['oven',['oven','dryer','iron']], ['cap',['cap','skirt','shirt']],
+  ['spaceship',['spaceship','cockroach','cap']], ['cockroach',['cockroach','spaceship','leather']], ['shirt',['shirt','skirt','cap']],
+  ['skirt',['skirt','shirt','denim']], ['checked',['checked','spotted','striped']], ['spotted',['spotted','floral','checked']],
+  ['striped',['striped','plain','spotted']], ['floral',['floral','checked','plain']], ['plain',['plain','striped','floral']],
+  ['pavement',['pavement','pedestrian','coast']],
+];
+(function(){
+  TOTAL.A = A_ITEMS.length;
+  const P = A_ITEMS.map(([k, o]) => { const opts = shuffle(o); return { k, opts, ans: opts.indexOf(o[0]) }; });
+  $('#exA').innerHTML = P.map((it, n) => `<div class="pcard" data-n="${n}"><div class="pic">${sv(PIC[it.k])}</div><div class="opts">${it.opts.map((x, i) => `<button class="opt" data-k="${i}">${x}</button>`).join('')}</div></div>`).join('');
+  $('#exA').addEventListener('click', e => {
+    const b = e.target.closest('.opt'); if (!b || b.disabled) return; const c = b.closest('.pcard'), it = P[+c.dataset.n], good = +b.dataset.k === it.ans;
+    c.querySelectorAll('.opt').forEach(x => { x.disabled = true; if (+x.dataset.k === it.ans && !good) x.classList.add('missed'); });
+    b.classList.add(good ? 'right' : 'wrong'); c.classList.add(good ? 'ok' : 'bad');
+    done.A++; if (good) score.A++; refresh();
+  });
+})();
+
+/* ---------- B ---------- */
+mc('B', '#exB', [
+  { s:'My winter scarf is warm and soft — it’s made from sheep. It’s ___.', o:['wool','silk','linen','rubber'] },
+  { s:'Car tyres and rain boots are made of ___.', o:['rubber','cotton','wool','linen'] },
+  { s:'This light, cool shirt is perfect for very hot summers. It’s made of ___.', o:['linen','leather','rubber','wool'] },
+  { s:'My jeans are made of ___.', o:['denim','silk','rubber','leather'] },
+  { s:'A biker jacket is usually made of ___ — animal skin.', o:['leather','linen','cotton','denim'] },
+  { s:'Most T-shirts are made of soft natural ___.', o:['cotton','rubber','leather','silk'] },
+  { s:'Her wedding dress was made of shiny, smooth ___.', o:['silk','denim','wool','rubber'] },
+  { s:'A tablecloth with little squares is ___.', o:['checked','spotted','plain','floral'] },
+  { s:'A scarf with any design or picture on it is ___.', o:['patterned','plain','wide','narrow'] },
+]);
+
+/* ---------- C ---------- */
+mc('C', '#exC', [
+  { s:'He judges people only by their looks and their clothes.', o:['superficial','gentle','fragile','emotionally mature'] },
+  { s:'She thinks money and expensive things are the most important things in life.', o:['materialistic','down-to-earth','gentle','needy'] },
+  { s:'He needs constant attention and reassurance from his girlfriend.', o:['needy','down-to-earth','fragile','materialistic'] },
+  { s:'She wants to be with her boyfriend every single minute of the day.', o:['clingy','gentle','superficial','emotionally mature'] },
+  { s:'She expects a perfect restaurant, expensive gifts and a lot of care all the time.', o:['high-maintenance','down-to-earth','gentle','fragile'] },
+  { s:'He can understand his feelings and talks about problems calmly.', o:['emotionally mature','clingy','superficial','needy'] },
+  { s:'She’s a famous singer, but she’s simple, friendly and easy to talk to.', o:['down-to-earth','high-maintenance','materialistic','clingy'] },
+  { s:'He never talks about his feelings — he keeps everything inside.', o:['He bottles things up.','He shows vulnerability.','He takes it for granted.','He goes sightseeing.'] },
+  { s:'She is kind and soft with children, never rough.', o:['gentle','needy','superficial','materialistic'] },
+  { s:'Be careful with this old glass vase — it breaks very easily.', o:['fragile','wide','plain','outdated'] },
+  { s:'He smiles and acts like he’s happy, but he isn’t.', o:['He pretends.','He requires.','He evacuates.','He appreciates.'] },
+  { s:'“I’m really, truly happy for you!”', o:['genuinely','recently','several','proper'] },
+  { s:'I always feel attracted to creative, funny people.', o:['I’m drawn to them.','I deal with them.','I provide for them.','I take them off.'] },
+  { s:'Her whole life is centred on her children.', o:['Her life revolves around them.','Her life shapes them.','She pretends them.','She lacks them.'] },
+  { s:'Qualities and behaviour that people connect with being a man.', o:['masculinity','existence','curiosity','willingness'] },
+]);
+
+/* ---------- D ---------- */
+gaps('D', $('#exD'), [
+  ['Many men feel they must ', G(1,'take off','provide for','revolve around'), ' their family.'],
+  ['It’s hard to ', G(2,'put on','shake','live up to'), ' everyone’s expectations.'],
+  ['Traditional ideas of ', G(0,'masculinity','pedestrian','existence'), ' say that men shouldn’t cry.'],
+  ['He never talks about his problems — he ', G(1,'goes sightseeing','bottles things up','shows vulnerability'), '.'],
+  ['It takes courage to ', G(2,'bargain','pretend','show vulnerability'), ' on a first date.'],
+  ['Our childhood experiences ', G(0,'shape','require','afford'), ' who we are.'],
+  ['Please don’t ', G(2,'evacuate','catch a cold','put pressure on'), ' me — I need time to decide.'],
+  ['We often ', G(1,'shake','take for granted','evacuate'), ' basic things like clean water and electricity.'],
+  ['His life ', G(0,'revolves around','lives up to','deals with'), ' his job — he never has free time.'],
+], $('#chkD'), $('#fbD'));
+
+/* ---------- E ---------- */
+gaps('E', $('#exE'), [[
+  'Last night a terrible ', G(1,'wildlife','disaster','scenery'), ' hit the ', G(2,'drought','pavement','coast'), '. ',
+  G(0,'Strong wind','Plain wind','Wide wind'), ' and ', G(2,'strong rain','wide rain','heavy rain'), ' destroyed hundreds of houses, and in the north the ground started to ',
+  G(1,'evacuate','shake','pollute'), ' after a small earthquake. Thousands of people had to ', G(0,'evacuate','harm','shape'), '. ',
+  'In the south the problem is different: after months of ', G(2,'flood','wildlife','drought'), ', a huge ', G(1,'scenery','wildfire','disaster'), ' is burning in the forest. ',
+  'Because of the ', G(0,'lack of','existence of','several'), ' rain, many trees are dead. Scientists say that factories also ', G(2,'shake','require','pollute'), ' the rivers, and this can ',
+  G(1,'appreciate','harm','afford'), ' the local ', G(0,'wildlife','currency','insurance'), '. It’s sad, because the ', G(2,'custom','income','scenery'), ' here used to be beautiful.'
+]], $('#chkE'), $('#fbE'));
+
+/* ---------- F ---------- */
+mc('F', '#exF', [
+  { s:'In Japan it’s a ___ to take off your shoes before you go into someone’s home.', o:['custom','currency','struggle','insurance'] },
+  { s:'The ___ in New York is so fast — everybody is always in a hurry.', o:['pace of life','carry-on luggage','custom','scenery'] },
+  { s:'At the party I didn’t know anyone, and I ___.', o:['felt out of place','went sightseeing','bargained','got on the wrong train'] },
+  { s:'At markets in Morocco you should always ___ — the first price is too high.', o:['bargain','struggle','evacuate','pretend'] },
+  { s:'I was tired, I ___ and ended up in a different city!', o:['got on the wrong train','went sightseeing','felt out of place','bargained'] },
+  { s:'Let’s ___ tomorrow — I want to see the old town and the cathedral.', o:['go sightseeing','bargain','struggle','feel out of place'] },
+  { s:'From the top of the mountain we had ___ of the lake.', o:['a breathtaking view','a round-trip ticket','a custom','an insurance'] },
+  { s:'Don’t forget to buy travel ___ — medical help abroad is very expensive.', o:['insurance','currency','luggage','custom'] },
+  { s:'The local ___ in Thailand is the baht.', o:['currency','custom','insurance','income'] },
+  { s:'You can only take one piece of ___ into the cabin — maximum 7 kg.', o:['carry-on luggage','round-trip ticket','insurance','currency'] },
+  { s:'I bought a ___: Moscow — Paris — Moscow.', o:['round-trip ticket','carry-on luggage','currency','breathtaking view'] },
+  { s:'Many foreign students ___ with the language in their first year abroad.', o:['struggle','bargain','go sightseeing','evacuate'] },
+]);
+
+/* ---------- G ---------- */
+mc('G', '#exG', [
+  { s:'Students often can’t ___ to rent a flat alone.', o:['afford','appreciate','require','shape'] },
+  { s:'She spent all her ___ on a trip to Japan.', o:['savings','failure','curiosity','willingness'] },
+  { s:'His monthly ___ is about 2,000 euros after tax.', o:['income','loan','well-being','apprenticeship'] },
+  { s:'Thank you so much for your help — I really ___ it.', o:['appreciate','afford','require','pretend'] },
+  { s:'Please wear ___ clothes for the interview — no jeans!', o:['proper','outdated','fragile','narrow'] },
+  { s:'What I like about Tom is his ___ to help other people.', o:['willingness','satisfaction','failure','income'] },
+  { s:'Out of ___, I opened the mysterious box.', o:['curiosity','savings','insurance','masculinity'] },
+  { s:'After school he started an ___ at a car factory.', o:['apprenticeship','income','existence','currency'] },
+  { s:'The bank refused to give us a ___ for the new flat.', o:['loan','savings','failure','custom'] },
+  { s:'Fax machines are completely ___ now.', o:['outdated','proper','gentle','genuinely'] },
+  { s:'The project was a total ___ — nothing worked.', o:['failure','satisfaction','well-being','curiosity'] },
+  { s:'Walking in the park every day really improves my ___.', o:['well-being','income','loan','currency'] },
+  { s:'Finishing the marathon gave him a huge feeling of ___.', o:['satisfaction','failure','savings','existence'] },
+]);
+
+/* ---------- H: typing ---------- */
+(function(){
+  const T = [
+    ['It ', ['takes'], ' me an hour to get to work.'], ['In the morning I get ', ['dressed'], ' in five minutes.'],
+    ['Wear a hat, or you’ll catch a ', ['cold'], '!'], ['At the wedding, the ', ['groom'], ' was very nervous.'],
+    ['It’s cold outside — ', ['put'], ' on your jacket.'], ['Please ', ['take'], ' off your shoes when you come in.'],
+    ['Walk on the ', ['pavement'], ', not on the road!'], ['The car stopped to let a ', ['pedestrian'], ' cross the street.'],
+    ['I ', ['recently'], ' read a great book — just last week.'], ['I’ve been to Italy ', ['several'], ' times — about five.'],
+    ['Living in a big city has many ', ['advantages'], ': jobs, cafés, museums.'], ['This job ', ['requires'], ' good English.'],
+    ['Food, water and a home are ', ['basic'], ' needs.'], ['I don’t read ', ['fiction'], ' — I prefer true stories.'],
+    ['Do you believe in the ', ['existence'], ' of aliens?'], ['The street is very ', ['narrow'], ' — two cars can’t pass.'],
+    ['The river here is very ', ['wide'], ' — almost one kilometre.'], ['My job is to ', ['deal'], ' with angry customers.'],
+  ];
+  TOTAL.H = T.length;
+  const norm = s => s.trim().toLowerCase().replace(/[’‘]/g, "'");
+  $('#exH').innerHTML = T.map(([a, w, b], n) => `<li data-n="${n}">${a}<input id="h${n}" autocomplete="off" spellcheck="false" placeholder="${w[0][0]}…" aria-label="missing word">${b}<button class="chk">Check</button><span class="ans" hidden></span></li>`).join('');
+  function check(li){
+    const n = +li.dataset.n, inp = li.querySelector('input'); if (!inp.value.trim() || inp.disabled) return;
+    const good = T[n][1].includes(norm(inp.value));
+    inp.disabled = true; li.querySelector('.chk').remove(); li.classList.add(good ? 'ok' : 'bad');
+    const a = li.querySelector('.ans'); a.hidden = false; a.textContent = good ? '✓' : `✗ → ${T[n][1][0]}`;
+    done.H++; if (good) score.H++; refresh();
+  }
+  $('#exH').addEventListener('click', e => { if (e.target.classList.contains('chk')) check(e.target.closest('li')); });
+  $('#exH').addEventListener('keydown', e => { if (e.key === 'Enter' && e.target.tagName === 'INPUT') check(e.target.closest('li')); });
+})();
+
+/* ---------- I: which future ---------- */
+const F3 = ['will', 'be going to', 'Present Continuous'];
+const W = 'will', GO = 'be going to', PC = 'Present Continuous';
+mc('I', '#exI', [
+  { s:'A: It’s so hot in here! B: I ___ <i>(open)</i> the window.', a:0, f:'’ll open', why:`<b>${W}</b> — решение в момент речи.` },
+  { s:'Look at the smoke over the forest! There ___ <i>(be)</i> a wildfire.', a:1, f:'’s going to be', why:`<b>${GO}</b> — прогноз по тому, что видим.` },
+  { s:'I ___ <i>(meet)</i> my insurance agent at 11 tomorrow. We booked it last week.', a:2, f:'’m meeting', why:`<b>${PC}</b> — договорённость, есть время.` },
+  { s:'I think there ___ <i>(be)</i> more droughts and wildfires in the future.', a:0, f:'will be', why:`<b>${W}</b> — прогноз-мнение (I think).` },
+  { s:'We ___ <i>(fly)</i> to Istanbul on Friday — I’ve already bought round-trip tickets.', a:2, f:'’re flying', why:`<b>${PC}</b> — всё организовано, билеты есть.` },
+  { s:'I’ve made a decision: I ___ <i>(stop)</i> bottling things up and talk to a therapist.', a:1, f:'’m going to stop', why:`<b>${GO}</b> — решение принято заранее.` },
+  { s:'A: I can’t carry all this luggage! B: Don’t worry, I ___ <i>(help)</i> you.', a:0, f:'’ll help', why:`<b>${W}</b> — спонтанное предложение помощи.` },
+  { s:'Careful! That shelf is fragile — it ___ <i>(break)</i>!', a:1, f:'’s going to break', why:`<b>${GO}</b> — видим, что сейчас случится.` },
+  { s:'My cousin ___ <i>(get)</i> married on Saturday. The groom is from Italy.', a:2, f:'’s getting', why:`<b>${PC}</b> — договорённость с датой.` },
+  { s:'I promise I ___ <i>(not put)</i> pressure on you.', a:0, f:'won’t put', why:`<b>${W}</b> — обещание.` },
+  { s:'She ___ <i>(start)</i> saving money — she’s decided, but she hasn’t opened an account yet.', a:1, f:'’s going to start', why:`<b>${GO}</b> — намерение, ничего ещё не организовано.` },
+  { s:'Probably the pace of life ___ <i>(get)</i> even faster.', a:0, f:'will get', why:`<b>${W}</b> — прогноз-мнение (probably).` },
+  { s:'We ___ <i>(have)</i> dinner with my parents tonight — Mum has already booked a table.', a:2, f:'’re having', why:`<b>${PC}</b> — договорённость с другими людьми.` },
+  { s:'Look at those black clouds! It ___ <i>(rain)</i> heavily.', a:1, f:'’s going to rain', why:`<b>${GO}</b> — прогноз по признакам.` },
+], F3);
+
+/* ---------- J: dialogues ---------- */
+gaps('J', $('#exJ'), [
+  ['<b>A:</b> I’ve caught a cold. <b>B:</b> Oh no! I ', G(0,'’ll bring','’m bringing'), ' you some medicine.'],
+  ['<b>A:</b> Why are you packing? <b>B:</b> I ', G(1,'’ll fly','’m flying'), ' to Rome tomorrow at six.'],
+  ['<b>A:</b> Have you decided about the apprenticeship? <b>B:</b> Yes, I ', G(0,'’m going to apply','’ll apply'), ' next month. I made up my mind yesterday.'],
+  ['<b>A:</b> Our kettle is so outdated! <b>B:</b> I know. I ', G(1,'’ll buy','’m going to buy'), ' a new one on Saturday — I planned it last week.'],
+  ['<b>A:</b> Any plans tonight? <b>B:</b> Yes, I ', G(0,'’m seeing','’ll see'), ' my friends at eight.'],
+  ['<b>A:</b> I don’t understand the local currency. <b>B:</b> Don’t worry, I ', G(0,'’ll explain','’m explaining'), ' it to you.'],
+  ['<b>A:</b> Look at those clouds! <b>B:</b> Oh no, there ', G(1,'will be','’s going to be'), ' heavy rain.'],
+  ['<b>A:</b> Do you think people ', G(0,'will live','are living'), ' on other planets in 100 years? <b>B:</b> Maybe — in spaceships!'],
+], $('#chkJ'), $('#fbJ'));
+
+/* ---------- K: mistakes ---------- */
+mc('K', '#exK', [
+  { s:'The phone is ringing. “I’m going to answer it!”', a:1, why:'Решение в момент речи → <b>I’ll answer it!</b>' },
+  { s:'I’m meeting my bank manager at 3 tomorrow.', a:0, why:'Договорённость → Present Continuous.' },
+  { s:'Look! That glass will fall!', a:1, why:'Видим, что сейчас случится → <b>is going to fall</b>.' },
+  { s:'I think the wildlife in this area will disappear.', a:0, why:'Мнение (I think) → will.' },
+  { s:'We will fly to Bali on Sunday — here are our tickets.', a:1, why:'Всё организовано → <b>We’re flying</b>.' },
+  { s:'Don’t worry, I won’t tell anyone.', a:0, why:'Обещание → will.' },
+  { s:'I’ve decided — I’m going to take out a loan.', a:0, why:'Решение принято → going to.' },
+  { s:'Wait, I’m helping you with your carry-on luggage!', a:1, why:'Спонтанное предложение помощи → <b>I’ll help you</b>.' },
+], ['Correct','Has a mistake']);
+
+/* ---------- results ---------- */
+$('#resGrid').innerHTML = Object.keys(EX).map(k => `<div class="res"><div class="n" id="r${k}"></div><div class="l">${k} · ${EX[k]}</div></div>`).join('');
+refresh();
+})();
+</script>
+
+</body></html>
