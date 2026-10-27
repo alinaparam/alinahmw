@@ -1,0 +1,432 @@
+<meta charset="utf-8">
+<title>Alina’s Homework · Tenses & If</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,600;0,9..144,800;1,9..144,500&family=Figtree:wght@400;500;600;700&display=swap">
+<style>
+:root{
+  --bg:#ECEFEE;--surface:#FFFFFF;--ink:#1F2328;--muted:#5E676A;--line:#D9DFDD;
+  --teal:#1E6F6A;--teal-soft:#DCEFEC;--mustard:#E3A72F;--mustard-soft:#FBF0D6;--mustard-ink:#835900;
+  --red:#C8553D;--red-soft:#F8E1DB;--good:#1E7F4F;--good-soft:#DDF2E6;--stage:#E2E8E6;
+  --sea:#2B7A99;--sea-soft:#DCEEF5;--acc:#E26D3A;--acc-soft:#FCE7DC;--olive:#5E8A3A;--olive-soft:#E6F0DC;
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    color-scheme:dark;
+    --bg:#121716;--surface:#1B2221;--ink:#E8EEEC;--muted:#9AA7A4;--line:#2A3533;
+    --teal:#5BC0B6;--teal-soft:#173430;--mustard:#F0BA4A;--mustard-soft:#3A2E14;--mustard-ink:#F5CD78;
+    --red:#E27A63;--red-soft:#3A1F1A;--good:#4CC98A;--good-soft:#173526;--stage:#202A28;
+    --sea:#5FB6D6;--sea-soft:#15303B;--acc:#F08A5A;--acc-soft:#3A2419;--olive:#95C46C;--olive-soft:#1E2E15;
+  }
+}
+:root[data-theme="dark"]{
+  color-scheme:dark;
+  --bg:#121716;--surface:#1B2221;--ink:#E8EEEC;--muted:#9AA7A4;--line:#2A3533;
+  --teal:#5BC0B6;--teal-soft:#173430;--mustard:#F0BA4A;--mustard-soft:#3A2E14;--mustard-ink:#F5CD78;
+  --red:#E27A63;--red-soft:#3A1F1A;--good:#4CC98A;--good-soft:#173526;--stage:#202A28;
+  --sea:#5FB6D6;--sea-soft:#15303B;--acc:#F08A5A;--acc-soft:#3A2419;--olive:#95C46C;--olive-soft:#1E2E15;
+}
+*{box-sizing:border-box}
+[hidden]{display:none!important}
+body{background:var(--bg);color:var(--ink);font:16px/1.55 "Figtree",system-ui,-apple-system,"Segoe UI",sans-serif;margin:0}
+h1,h2,h3{font-family:"Fraunces",Georgia,serif;line-height:1.08;margin:0;text-wrap:balance}
+button{font:inherit;color:inherit;cursor:pointer}
+button:focus-visible,select:focus-visible,input:focus-visible{outline:3px solid var(--mustard);outline-offset:2px}
+svg{display:block;width:100%;height:auto}
+
+.bar{position:sticky;top:env(safe-area-inset-top,0px);z-index:20;background:color-mix(in srgb,var(--bg) 88%,transparent);backdrop-filter:blur(10px);border-bottom:1px solid var(--line)}
+.bar-in{max-width:1000px;margin:0 auto;padding:10px 20px;display:flex;align-items:center;justify-content:space-between;gap:12px}
+.bar-t{font-family:"Fraunces",serif;font-weight:800;font-size:18px}
+.prog{font-size:13.5px;font-weight:700;color:var(--muted);font-variant-numeric:tabular-nums;display:flex;gap:10px;align-items:center}
+.prog b{background:var(--mustard-soft);color:var(--mustard-ink);border-radius:999px;padding:4px 11px}
+
+.wrap{max-width:1000px;margin:0 auto;padding-inline:20px;padding-block:0 80px}
+.hello{padding-block:40px 8px}
+.hello h1{font-size:clamp(46px,8vw,80px);font-weight:800;letter-spacing:-.02em}
+.hello h1 em{font-weight:500;color:var(--red)}
+.note{margin-top:18px;background:var(--mustard-soft);border-radius:18px;padding:16px 18px;display:grid;gap:6px;max-width:680px}
+.note p{margin:0;font-weight:600}
+.note p:first-child{color:var(--mustard-ink);font-weight:700}
+
+.part{margin-top:56px;padding-top:12px;border-top:2px solid var(--ink);display:flex;justify-content:space-between;align-items:baseline;gap:12px;flex-wrap:wrap}
+.part span{font-size:13px;font-weight:700;letter-spacing:.1em;text-transform:uppercase}
+.part b{font-family:"Fraunces",serif;font-size:22px}
+.sec{padding-top:28px}
+.ru{color:var(--muted);font-size:15px;margin:4px 0 12px;max-width:72ch}
+.tag{display:inline-block;font-size:11.5px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;padding:3px 9px;border-radius:6px;background:var(--mustard-soft);color:var(--mustard-ink);margin-bottom:8px}
+.block{background:var(--surface);border:1px solid var(--line);border-radius:22px;padding:22px;margin-top:18px}
+.block h3{font-size:24px;font-weight:600;margin-bottom:4px}
+.bl-head{display:flex;justify-content:space-between;align-items:flex-start;gap:12px;flex-wrap:wrap;margin-bottom:14px}
+.bl-head p{margin:2px 0 0;color:var(--muted);max-width:64ch}
+.score{font-size:13px;font-weight:700;color:var(--muted);font-variant-numeric:tabular-nums;white-space:nowrap;padding-top:4px}
+
+.mc{list-style:none;margin:0;padding:0;display:grid;gap:10px;counter-reset:q}
+.mc li{border:1px solid var(--line);border-radius:14px;padding:12px 14px;display:grid;gap:8px;counter-increment:q}
+.mc .s{font-weight:600}
+.mc .s::before{content:counter(q) ". ";color:var(--muted);font-weight:700}
+.mc .s i{color:var(--muted);font-weight:500}
+.blank{display:inline-block;min-width:3.4em;border-bottom:2.5px solid var(--mustard);text-align:center;color:var(--teal);font-weight:700}
+.opts{display:flex;flex-wrap:wrap;gap:8px}
+.opt{border:1.5px solid var(--line);background:var(--bg);border-radius:10px;padding:6px 13px;font-weight:700;font-size:14.5px;text-align:left}
+.opt:hover:not(:disabled){border-color:var(--teal)}
+.opt:disabled{cursor:default}
+.opt.right{background:var(--good-soft);border-color:var(--good);color:var(--good)}
+.opt.wrong{background:var(--red-soft);border-color:var(--red);color:var(--red)}
+.opt.missed{border-color:var(--good);border-style:dashed;color:var(--good)}
+li.ok,.pcard.ok{background:color-mix(in srgb,var(--good-soft) 45%,transparent)}
+li.bad,.pcard.bad{background:color-mix(in srgb,var(--red-soft) 45%,transparent)}
+.why{font-size:14px;color:var(--muted)}
+.why b{color:var(--ink)}
+
+.pcards{display:grid;grid-template-columns:repeat(auto-fill,minmax(170px,1fr));gap:12px}
+.pcard{border:1px solid var(--line);border-radius:16px;padding:8px 10px 12px;display:flex;flex-direction:column;gap:8px}
+.pcard .pic{background:var(--stage);border-radius:12px;padding:4px}
+.pcard .opt{font-size:13.5px;padding:5px 10px}
+
+.gl{list-style:none;margin:0;padding:0;display:grid;gap:10px;counter-reset:q}
+.gl li{border:1px solid var(--line);border-radius:14px;padding:12px 14px;font-weight:600;line-height:2.1;counter-increment:q}
+.gl li::before{content:counter(q) ". ";color:var(--muted);font-weight:700}
+.gl li b{color:var(--muted)}
+.story{font-size:18px;line-height:2.15;max-width:78ch;margin:0}
+select.g{font:inherit;font-weight:700;color:var(--teal);background:var(--teal-soft);border:1.5px solid transparent;border-radius:9px;padding:1px 4px;max-width:100%}
+.okw{font-weight:700;color:var(--good);background:var(--good-soft);border-radius:7px;padding:1px 7px}
+.badw{font-weight:700;color:var(--red);background:var(--red-soft);border-radius:7px;padding:1px 7px}
+.badw s{opacity:.7}
+.badw b{color:var(--good)}
+.btn{border:none;background:var(--ink);color:var(--surface);font-weight:700;padding:9px 16px;border-radius:11px}
+.btn:disabled{opacity:.4;cursor:default}
+.row{display:flex;gap:10px;flex-wrap:wrap;align-items:center}
+.fb{font-weight:600;font-size:14px}
+.fb.ok{color:var(--good)}.fb.no{color:var(--red)}
+
+.tw{list-style:none;margin:0;padding:0;display:grid;gap:10px;counter-reset:q}
+.tw li{border:1px solid var(--line);border-radius:14px;padding:10px 14px;font-weight:600;line-height:2.2;counter-increment:q}
+.tw li::before{content:counter(q) ". ";color:var(--muted);font-weight:700}
+.tw input{font:inherit;font-weight:700;width:9.5em;max-width:100%;padding:2px 8px;border-radius:9px;border:1.5px solid var(--line);background:var(--bg);color:var(--ink)}
+.tw li.ok input{border-color:var(--good);color:var(--good)}
+.tw li.bad input{border-color:var(--red);color:var(--red)}
+.tw .chk{border:1.5px solid var(--line);background:var(--surface);border-radius:9px;padding:2px 10px;font-weight:700;font-size:13.5px;margin-left:6px}
+.tw .ans{color:var(--good);font-weight:700;margin-left:6px}
+
+.rules{display:grid;grid-template-columns:repeat(auto-fit,minmax(270px,1fr));gap:14px}
+.rule{background:var(--surface);border:1px solid var(--line);border-radius:22px;padding:20px;display:flex;flex-direction:column;gap:10px;border-top:6px solid var(--rc)}
+.rule.will{--rc:var(--sea);--rs:var(--sea-soft)}
+.rule.going{--rc:var(--acc);--rs:var(--acc-soft)}
+.rule.pc{--rc:var(--olive);--rs:var(--olive-soft)}
+.rule h3{font-size:30px;color:var(--rc)}
+.rule .form{font-weight:700;background:var(--rs);border-radius:10px;padding:8px 12px;font-size:15px}
+.use{display:grid;gap:4px}
+.use b{font-size:14.5px}
+.use span{font-style:italic;color:var(--muted);font-size:15px}
+
+.results{margin-top:48px;background:var(--ink);color:var(--surface);border-radius:26px;padding:26px}
+.results h2{font-size:clamp(30px,5vw,44px)}
+.results .sub{opacity:.75;margin:6px 0 18px}
+.res-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(170px,1fr));gap:10px}
+.res{background:color-mix(in srgb,var(--surface) 10%,transparent);border-radius:16px;padding:12px 14px}
+.res .n{font-family:"Fraunces",serif;font-size:28px;font-weight:800;font-variant-numeric:tabular-nums}
+.res .l{font-size:13px;opacity:.8;font-weight:600}
+.total{margin-top:16px;display:flex;align-items:baseline;gap:14px;flex-wrap:wrap}
+.total .n{font-family:"Fraunces",serif;font-size:64px;font-weight:800;line-height:1;color:var(--mustard)}
+.total .p{font-size:20px;font-weight:700}
+.status{margin-top:12px;font-weight:600;opacity:.85}
+</style>
+<style>
+.rule.fc{--rc:var(--teal);--rs:var(--teal-soft)}
+.rule.pc{--rc:var(--olive);--rs:var(--olive-soft)}
+.rule.fs{--rc:var(--mustard);--rs:var(--mustard-soft)}
+.audio-box{background:var(--mustard-soft);border-radius:16px;padding:14px 16px;margin-bottom:14px}
+.audio-box audio{width:100%}
+.script{margin-top:14px;background:var(--bg);border-radius:14px;padding:14px 16px;line-height:1.7}
+.ghost{border:1.5px solid var(--line);background:var(--surface);border-radius:11px;padding:8px 14px;font-weight:700}
+.mc .s s{color:var(--red);text-decoration:none;font-style:italic}
+</style>
+
+<style>
+.tw .h{color:var(--muted);font-weight:600;font-style:italic}
+.tw input{width:14em}
+.tbar{display:flex;align-items:center;gap:12px;margin:0 0 12px;flex-wrap:wrap}
+.tbar .clock{font-family:"Fraunces",serif;font-size:26px;font-weight:800;min-width:3.2em;font-variant-numeric:tabular-nums}
+.tbar .clock.low{color:var(--red)}
+.tbar button{border:0;background:var(--teal);color:#fff;border-radius:12px;padding:9px 18px;font-weight:800;font-size:15px}
+.tbar button:disabled{opacity:.5}
+.tbar .tip{font-size:13.5px;color:var(--muted);font-weight:600}
+.mc.locked{filter:blur(5px);pointer-events:none;user-select:none}
+.tag.speed{background:var(--red-soft);color:var(--red)}
+.cheat{background:var(--surface);border:2px solid var(--teal);border-radius:18px;padding:14px 18px;margin:0 0 14px}
+.cheat h4{margin:0 0 8px;font-family:"Fraunces",serif;font-size:19px;color:var(--teal)}
+.cheat table{width:100%;border-collapse:collapse;font-size:14.5px}
+.cheat td,.cheat th{padding:7px 8px;border-top:1px solid var(--line);vertical-align:top;text-align:left}
+.cheat th{border-top:0;color:var(--muted);font-size:13px}
+.cheat td:first-child{font-weight:800;white-space:nowrap}
+.cheat b{color:var(--teal)}
+.cheat .warn{margin-top:8px;background:var(--red-soft);border-radius:10px;padding:8px 12px;font-size:14px;font-weight:600}
+.task{background:var(--teal-soft);border-radius:14px;padding:12px 16px;line-height:1.7;font-weight:600}
+</style>
+<div class="bar"><div class="bar-in">
+  <div class="bar-t">Alina’s Homework · Tenses & If</div>
+  <div class="prog">Answered <b id="topProg">0</b></div>
+</div></div>
+
+<main class="wrap">
+<header class="hello">
+  <h1>Hello, <em>Алина!</em></h1>
+  <div class="note">
+    <p>Перед каждой частью — шпаргалка: сначала прочитай её, вспомни правило, потом делай задания. Домашка по правилам, которые мы повторяли: Present Simple / Continuous, Present Perfect / Past Simple, Present Perfect Continuous и First conditional. Многие предложения — твои же с урока 😉</p>
+    <p>На каждый вопрос — одна попытка. Не перезагружай страницу. В конце пришли мне в Телеграм скрин с результатами.</p>
+  </div>
+</header>
+
+<div class="part"><span>Part 1</span><b>Present Simple or Continuous?</b></div>
+<section class="sec">
+  <div class="cheat"><h4>📌 Present Simple vs Present Continuous</h4><table>
+<tr><th>Время</th><th>Когда</th><th>Пример</th></tr>
+<tr><td>Present Simple</td><td>привычка, регулярно, факт<br><i>usually, always, every day, never</i></td><td>I <b>usually work</b> at the office.<br>Water <b>boils</b> at 100°.</td></tr>
+<tr><td>Present Continuous</td><td>1) прямо сейчас<br>2) <b>временная ситуация</b> около момента речи<br><i>now, this week, this month, lately, these days</i></td><td>Shh! The baby <b>is sleeping</b>.<br>…but <b>this week</b> I<b>’m working</b> from home.<br><b>Lately</b> I<b>’m reading</b> a lot.</td></tr>
+</table><div class="warn">⚠️ Глаголы состояния — без -ing: know, understand, love, like, want, need, believe. <i>I understand</i>, не <s>I’m understanding</s>.</div></div>
+  <div class="block"><div class="bl-head"><div><span class="tag">Exercise A</span><h3>Usually… but this week…</h3><p>Привычка или временная ситуация «в этот период»?</p></div><span class="score" id="scA"></span></div><ol class="mc" id="exA"></ol></div>
+  <div class="block"><div class="bl-head"><div><span class="tag">Exercise B</span><h3>Write the verb</h3><p>Впиши глагол в нужной форме. Подсказка в скобках. Enter или Check.</p></div><span class="score" id="scB"></span></div><ol class="tw" id="exB"></ol></div>
+</section>
+
+<div class="part"><span>Part 2</span><b>Present Perfect or Past Simple?</b></div>
+<section class="sec">
+  <div class="cheat"><h4>📌 Present Perfect vs Past Simple</h4><table>
+<tr><th>Время</th><th>Когда</th><th>Пример</th></tr>
+<tr><td>Present Perfect<br><i>have / has + V3</i></td><td>1) <b>опыт</b> (когда — не важно)<br>2) <b>результат</b> сейчас<br>3) действие длится до сих пор (глаголы состояния) + <b>since / for</b><br><i>ever, never, already, just, yet, this week</i></td><td>I<b>’ve been to</b> Turkey.<br>I<b>’ve lost</b> my keys — I can’t get in.<br>We<b>’ve known</b> each other <b>for</b> 10 years.<br>She <b>hasn’t called yet</b>. I<b>’ve just got</b> home.</td></tr>
+<tr><td>Past Simple<br><i>V2 / did</i></td><td>закончено, есть <b>точное время</b><br><i>yesterday, in 2020, ago, last year, this morning (прошло), When…?</i></td><td>I <b>broke</b> my leg <b>in 2020</b>.<br><b>When did</b> you start your job?</td></tr>
+</table><div class="warn">⚠️ <b>been to</b> London (побывать) · <b>since</b> 2019 (с момента) · <b>for</b> 10 years (в течение) · home — без to: <i>I’ve just got <b>home</b></i></div></div>
+  <div class="block"><div class="bl-head"><div><span class="tag">Exercise C</span><h3>Experience, result or exact time?</h3></div><span class="score" id="scC"></span></div><ol class="mc" id="exC"></ol></div>
+  <div class="block"><div class="bl-head"><div><span class="tag">Exercise D</span><h3>Complete the sentences</h3><p>Подсказка в скобках.</p></div><span class="score" id="scD"></span></div><ol class="tw" id="exD"></ol></div>
+</section>
+
+<div class="part"><span>Part 3</span><b>Present Perfect Continuous</b></div>
+<section class="sec">
+  <div class="cheat"><h4>📌 Present Perfect Continuous</h4><table>
+<tr><th>Форма</th><th>Когда</th><th>Пример</th></tr>
+<tr><td>have / has been + -ing</td><td>1) процесс начался в прошлом и <b>длится до сих пор</b> — важна <b>длительность</b> (how long, for, since)<br>2) процесс недавно закончился, видны <b>«следы»</b></td><td>I<b>’ve been reading</b> this book <b>for a year</b>.<br>Your hands are dirty — what <b>have you been doing</b>?</td></tr>
+<tr><td>have / has + V3</td><td><b>результат, количество</b> (how many, how much, so far)</td><td>I<b>’ve read 500 pages</b>.<br>She <b>has written</b> three books.</td></tr>
+</table><div class="warn">⚠️ how long / for / since + процесс → <b>been + -ing</b> · how many / сколько сделано → <b>have + V3</b> · write → wrote → <b>written</b></div></div>
+  <div class="block"><div class="bl-head"><div><span class="tag">Exercise E</span><h3>How long or how many?</h3><p>Процесс и длительность → have been + -ing. Результат и количество → have + V3.</p></div><span class="score" id="scE"></span></div><ol class="mc" id="exE"></ol></div>
+  <div class="block"><div class="bl-head"><div><span class="tag">Exercise F</span><h3>Write it</h3><p>Подсказка в скобках.</p></div><span class="score" id="scF"></span></div><ol class="tw" id="exF"></ol></div>
+</section>
+
+<div class="part"><span>Part 4</span><b>First conditional</b></div>
+<section class="sec">
+  <div class="cheat"><h4>📌 First conditional</h4><table>
+<tr><th>Часть</th><th>Время</th><th>Пример</th></tr>
+<tr><td>If / when / as soon as / before / until / unless …</td><td><b>Present Simple</b> (без will!)</td><td><b>If it rains</b> tomorrow,</td></tr>
+<tr><td>главная часть</td><td><b>will + V</b></td><td>we<b>’ll stay</b> at home.</td></tr>
+</table><table style="margin-top:8px">
+<tr><td>unless</td><td>= if … not</td><td><b>Unless</b> you hurry, you’ll be late. = If you don’t hurry…</td></tr>
+<tr><td>until</td><td>пока не (до момента)</td><td>I’ll wait <b>until</b> you finish.</td></tr>
+<tr><td>as soon as</td><td>как только</td><td>I’ll text you <b>as soon as</b> I hear the news.</td></tr>
+<tr><td>before</td><td>перед тем как</td><td><b>Before</b> I leave, I’ll turn off the light.</td></tr>
+</table><div class="warn">⚠️ ✗ If it <s>will rain</s> · ✗ I’ll wait <s>unless</s> you finish (нужно until) · everybody <b>comes</b> (как he/she)</div></div>
+  <div class="block"><div class="bl-head"><div><span class="tag">Exercise G</span><h3>if, unless, until, as soon as, before</h3></div><span class="score" id="scG"></span></div><ol class="mc" id="exG"></ol></div>
+  <div class="block"><div class="bl-head"><div><span class="tag">Exercise H</span><h3>Finish the sentence</h3><p>Помни: после if / when / until / as soon as / before — без will.</p></div><span class="score" id="scH"></span></div><ol class="tw" id="exH"></ol></div>
+</section>
+
+<div class="part"><span>Part 5</span><b>Your mistakes 🔍</b></div>
+<section class="sec">
+  <div class="block"><div class="bl-head"><div><span class="tag">Exercise I</span><h3>Fix your own sentences</h3><p>Это фразы с нашего урока. Выбери правильный вариант.</p></div><span class="score" id="scI"></span></div><ol class="mc" id="exI"></ol></div>
+  <div class="block"><div class="bl-head"><div><span class="tag speed">Exercise J ⏱ 1:30</span><h3>Speed round</h3><p>Все темы вперемешку. Нажми Start — у тебя 90 секунд. Что не успеешь — засчитается как ошибка.</p></div><span class="score" id="scJt"></span></div>
+    <div class="tbar"><button id="goJ">Start ⏱</button><span class="clock" id="ckJ">1:30</span><span class="tip" id="tpJ"></span></div>
+    <ol class="mc locked" id="exJ"></ol></div>
+</section>
+
+<div class="part"><span>Part 6</span><b>Translate ✍️</b></div>
+<section class="sec">
+  <div class="block"><div class="bl-head"><div><span class="tag">Exercise K</span><h3>Say it in English</h3><p>Переведи нужную часть. Подсказка в скобках.</p></div><span class="score" id="scK"></span></div><ol class="tw" id="exK"></ol></div>
+</section>
+
+<section class="results">
+  <h2>Alina’s results</h2>
+  <p class="sub">Сделай скрин этого блока и пришли мне в Телеграм.</p>
+  <div class="res-grid" id="resGrid"></div>
+  <div class="total"><span class="n" id="rTot"></span><span class="p" id="rPct"></span></div>
+  <div class="status" id="rStatus"></div>
+</section>
+</main>
+
+<script>
+(function(){
+const $ = s => document.querySelector(s);
+const shuffle = a => { a = a.slice(); for (let i = a.length - 1; i > 0; i--){ const j = Math.floor(Math.random() * (i + 1)); [a[i], a[j]] = [a[j], a[i]]; } return a; };
+const sv = inner => `<svg viewBox="0 0 120 90" role="img" aria-hidden="true">${inner}</svg>`;
+const INK = '#1F2328';
+
+/* ---------- scoring ---------- */
+const EX = { A:'PS or PC?', B:'Write the verb', C:'Perfect or Past?', D:'Complete', E:'How long / how many?', F:'Write it', G:'if / unless / until', H:'Finish the sentence', I:'Your mistakes', Jt:'Speed round ⏱', K:'Translate' };
+const TOTAL = {}, score = {}, done = {};
+Object.keys(EX).forEach(k => { score[k] = 0; done[k] = 0; });
+function refresh(){
+  let s = 0, d = 0, t = 0;
+  Object.keys(EX).forEach(k => { s += score[k]; d += done[k]; t += TOTAL[k] || 0; const el = $('#sc' + k); if (el) el.textContent = `${score[k]} / ${TOTAL[k]}`; const r = $('#r' + k); if (r) r.textContent = `${score[k]} / ${TOTAL[k]}`; });
+  $('#topProg').textContent = `${d} / ${t}`; $('#rTot').textContent = `${s} / ${t}`;
+  $('#rPct').textContent = d ? `${Math.round(s / t * 100)}%` : '';
+  $('#rStatus').textContent = d === t ? '✓ Homework complete' : `Answered ${d} of ${t} — keep going!`;
+}
+window.addEventListener('beforeunload', e => { if (Object.values(done).some(Boolean)){ e.preventDefault(); e.returnValue = ''; } });
+
+/* one-attempt multiple choice. items: {s, o:[correct first, ...distractors] | a index for fixed opts, f, why} */
+function mc(key, listId, items, fixed){
+  TOTAL[key] = (TOTAL[key] || 0) + items.length;
+  const list = $(listId);
+  const prepared = items.map(it => {
+    if (fixed) return { ...it, opts: fixed, ans: it.a };
+    const opts = shuffle(it.o); return { ...it, opts, ans: opts.indexOf(it.o[0]) };
+  });
+  list.innerHTML = prepared.map((it, n) => `<li data-n="${n}"><div class="s">${it.s.replace('___', '<span class="blank">___</span>')}</div><div class="opts">${it.opts.map((x, k) => `<button class="opt" data-k="${k}">${x}</button>`).join('')}</div><div class="why" hidden></div></li>`).join('');
+  list.addEventListener('click', e => {
+    const b = e.target.closest('.opt'); if (!b || b.disabled) return;
+    const li = b.closest('li'), it = prepared[+li.dataset.n], good = +b.dataset.k === it.ans;
+    li.querySelectorAll('.opt').forEach(x => { x.disabled = true; if (+x.dataset.k === it.ans && !good) x.classList.add('missed'); });
+    b.classList.add(good ? 'right' : 'wrong'); li.classList.add(good ? 'ok' : 'bad');
+    const bl = li.querySelector('.blank'); if (bl) bl.textContent = it.f || it.opts[it.ans];
+    if (it.why || !good){ const w = li.querySelector('.why'); w.hidden = false; w.innerHTML = (good ? '✓ ' : '✗ Правильно: <b>' + it.opts[it.ans] + '</b>. ') + (it.why || ''); }
+    done[key]++; if (good) score[key]++; refresh();
+  });
+}
+/* one-check dropdown gaps. g = {o:[...], a} */
+function gaps(key, el, lines, btn, fb){
+  let gid = 0; const all = [];
+  const sel = g => { const id = el.id + 'g' + gid++; all.push({ id, ...g }); return `<select class="g" id="${id}" aria-label="choose"><option value="">…</option>${g.o.map((x, k) => `<option value="${k}">${x}</option>`).join('')}</select>`; };
+  const html = lines.map(p => p.map(x => typeof x === 'string' ? x : sel(x)).join(''));
+  el.innerHTML = el.tagName === 'OL' ? html.map(h => `<li>${h}</li>`).join('') : html.join('');
+  TOTAL[key] = all.length;
+  btn.addEventListener('click', () => {
+    const empty = all.filter(g => document.getElementById(g.id).value === '').length;
+    if (empty){ fb.className = 'fb no'; fb.textContent = `Заполни все пропуски (осталось ${empty}), потом проверяй.`; return; }
+    all.forEach(g => {
+      const s = document.getElementById(g.id), v = +s.value, w = document.createElement('span');
+      if (v === g.a){ w.className = 'okw'; w.textContent = g.o[g.a]; score[key]++; }
+      else { w.className = 'badw'; w.innerHTML = `<s>${g.o[v]}</s> → <b>${g.o[g.a]}</b>`; }
+      s.replaceWith(w);
+    });
+    done[key] = all.length; btn.disabled = true; refresh();
+    fb.className = 'fb ' + (score[key] === all.length ? 'ok' : 'no'); fb.textContent = `${score[key]} / ${all.length} correct.`;
+  });
+}
+const G = (a, ...o) => ({ o, a });
+
+
+function typing(key, elId, items, ph){
+  TOTAL[key] = (TOTAL[key] || 0) + items.length;
+  const norm = s => s.trim().toLowerCase().replace(/[’‘]/g, "'").replace(/\s+/g, ' ');
+  $(elId).innerHTML = items.map(([a, w, b], n) => `<li data-n="${n}">${a}<input autocomplete="off" spellcheck="false" placeholder="${ph}" aria-label="answer" style="width:12em">${b}<button class="chk">Check</button><span class="ans" hidden></span></li>`).join('');
+  function check(li){
+    const n = +li.dataset.n, inp = li.querySelector('input'); if (!inp.value.trim() || inp.disabled) return;
+    const good = items[n][1].includes(norm(inp.value));
+    inp.disabled = true; li.querySelector('.chk').remove(); li.classList.add(good ? 'ok' : 'bad');
+    const a = li.querySelector('.ans'); a.hidden = false; a.textContent = good ? '✓' : `✗ → ${items[n][1][0]}`;
+    done[key]++; if (good) score[key]++; refresh();
+  }
+  $(elId).addEventListener('click', e => { if (e.target.classList.contains('chk')) check(e.target.closest('li')); });
+  $(elId).addEventListener('keydown', e => { if (e.key === 'Enter' && e.target.tagName === 'INPUT') check(e.target.closest('li')); });
+}
+
+
+function timed(key, listId, items, secs){
+  mc(key, listId, items);
+  const list = $(listId), btn = $('#go' + key[0]), ck = $('#ck' + key[0]), tp = $('#tp' + key[0]); let left = secs, id = null;
+  const fmt = s => `${Math.floor(s / 60)}:${String(s % 60).padStart(2, '0')}`;
+  const stop = () => { clearInterval(id); id = null; list.querySelectorAll('li').forEach(li => { if (li.classList.contains('ok') || li.classList.contains('bad')) return; li.classList.add('bad'); li.querySelectorAll('.opt').forEach(x => x.disabled = true); done[key]++; }); refresh(); tp.textContent = `Время вышло! ${score[key]} / ${items.length}`; };
+  list.addEventListener('click', () => setTimeout(() => { if (id && [...list.querySelectorAll('li')].every(li => li.classList.contains('ok') || li.classList.contains('bad'))){ clearInterval(id); id = null; tp.textContent = `Готово за ${secs - left} сек! ${score[key]} / ${items.length}`; } }, 0));
+  btn.addEventListener('click', () => { btn.disabled = true; list.classList.remove('locked'); id = setInterval(() => { left--; ck.textContent = fmt(left); ck.classList.toggle('low', left <= 10); if (left <= 0) stop(); }, 1000); });
+}
+
+const T = (s, ...ans) => { const [a, b] = s.split('___'); return [a, ans.map(x => x.toLowerCase().replace(/’/g, "'")), b.replace(/\(([^)]*)\)/, '<span class="h">($1)</span>')]; };
+mc('A', '#exA', [
+  { s:'I usually work at the office, but this week I ___ from home.', o:['’m working','work','worked'] },
+  { s:'She always ___ the bus to work.', o:['takes','is taking','take'] },
+  { s:'I usually cook dinner, but today I’m tired, so I ___ food.', o:['’m ordering','order','ordered'] },
+  { s:'Lately I ___ a lot of books.', o:['’m reading','read','reads'], why:'lately / these days — период около момента речи → Continuous.' },
+  { s:'I ___ what you mean.', o:['understand','’m understanding','understanding'], why:'understand — глагол состояния, без -ing.' },
+  { s:'This week I ___ my flat because I have a lot of work.', o:['’m not cleaning','don’t clean','not clean'] },
+]);
+typing('B', '#exB', [
+  T('These days I ___ a hat for myself. (knit)', "am knitting", "'m knitting"),
+  T('My husband never ___ . (cook)', 'cooks'),
+  T('Be quiet! The baby ___ . (sleep)', 'is sleeping', "'s sleeping"),
+  T('Why ___ at me like that? (you / look)', 'are you looking'),
+  T('We ___ the kitchen at the moment. (renovate)', 'are renovating', "'re renovating"),
+  T('How often ___ to the gym? (you / go)', 'do you go'),
+], 'type here');
+mc('C', '#exC', [
+  { s:'___ to London?', o:['Have you ever been','Have you ever been in','Did you ever go in'], why:'Опыт: have been <b>to</b> (побывать где-то).' },
+  { s:'I ___ my leg in 2020.', o:['broke','have broken','have broke'], why:'Точное время (in 2020) → Past Simple.' },
+  { s:'I ___ my leg, so I can’t walk now.', o:['have broken','broke','break'], why:'Результат сейчас → Present Perfect.' },
+  { s:'I ___ a great breakfast this morning.', o:['cooked','have cooked','have cook'], why:'this morning (утро прошло) → Past Simple.' },
+  { s:'I ___ this film twice. It’s great!', o:['have seen','saw','have saw'] },
+  { s:'We ___ each other for ten years.', o:['have known','know','knew'], why:'know — состояние, действие длится до сих пор → Present Perfect + for.' },
+]);
+typing('D', '#exD', [
+  T('She ___ me yet. (not / call)', "hasn't called", 'has not called'),
+  T('I ___ home! (just / come)', 'have just come', "'ve just come", 'have just got', "'ve just got"),
+  T('I ___ a car. (never / drive)', 'have never driven', "'ve never driven"),
+  T('I ___ my hair! Do you like it? (dye)', 'have dyed', "'ve dyed"),
+  T('I ___ this guy since 2019. (love)', 'have loved', "'ve loved"),
+  T('Last year we ___ to Turkey. (go)', 'went'),
+  T('When ___ your new job? (you / start)', 'did you start'),
+  T('___ your homework yet? (you / do)', 'have you done'),
+], 'type here');
+mc('E', '#exE', [
+  { s:'I ___ this book for a year, and I still haven’t finished it.', o:['have been reading','have read','read'] },
+  { s:'I ___ 500 pages so far.', o:['have read','have been reading','am reading'] },
+  { s:'She ___ three books.', o:['has written','has been writing','has wrote'] },
+  { s:'Your hands are dirty! What ___ ?', o:['have you been doing','have you done','did you do'] },
+  { s:'I ___ tennis for ten years.', o:['have been playing','am playing','play'] },
+  { s:'It ___ all day — everything is wet.', o:['has been raining','has rained','rains'] },
+]);
+typing('F', '#exF', [
+  T('I ___ the house for an hour. I’m so tired! (clean)', 'have been cleaning', "'ve been cleaning"),
+  T('We ___ the flat for six months. (renovate)', 'have been renovating', "'ve been renovating"),
+  T('He ___ 20 pages so far. (read)', 'has read', "'s read"),
+  T('How long ___ English? (you / learn)', 'have you been learning'),
+  T('I ___ in this company for ten years. (work)', 'have been working', "'ve been working", 'have worked', "'ve worked"),
+  T('How many cups of coffee ___ today? (you / drink)', 'have you drunk', 'have you had'),
+], 'type here');
+mc('G', '#exG', [
+  { s:'I’ll wait ___ you finish.', o:['until','unless','if'], why:'until — пока не (до момента). unless = if … not.' },
+  { s:'___ I leave, I’ll turn off the light.', o:['Before','Unless','Until'] },
+  { s:'___ I hear the news, I’ll text you.', o:['As soon as','Unless','Until'] },
+  { s:'___ you hurry, you’ll miss the bus.', o:['Unless','Until','As soon as'], why:'Unless you hurry = If you don’t hurry.' },
+  { s:'If the weather ___ nice, we’ll go to the park.', o:['is','will be','would be'] },
+  { s:'We’ll start when everybody ___ .', o:['comes','will come','come'], why:'everybody — как he/she → -s.' },
+]);
+typing('H', '#exH', [
+  T('If I ___ time, I’ll help you. (have)', 'have'),
+  T('If she ___ , I’ll go home. (come)', 'comes'),
+  T('If I don’t eat, I ___ ! (faint)', 'will faint', "'ll faint"),
+  T('If you don’t study, you ___ the exam. (fail)', 'will fail', "'ll fail"),
+  T('I’ll call you as soon as I ___ . (arrive)', 'arrive'),
+  T('If I have money, I ___ to Rome. (fly)', 'will fly', "'ll fly"),
+], 'type here');
+mc('I', '#exI', [
+  { s:'Which one is correct?', o:['Usually I work at the office, but this week I’m working at home.','Usually I work at the office, but this week I work at home.','Usually I’m working at the office, but this week I work at home.'] },
+  { s:'Which one is correct?', o:['She hasn’t called me yet.','She has not still called me.','She didn’t call me yet still.'] },
+  { s:'Which one is correct?', o:['I’ve just got home.','I have just came at home.','I have just come to home.'] },
+  { s:'Which one is correct?', o:['I’ve been reading this book for a year.','I have read this book for one year.','I am reading this book for a year.'] },
+  { s:'Which one is correct?', o:['Before I leave, I’ll turn off the light.','Before I am leaving, I would turn on the light.','Before I will leave, I turn off the light.'] },
+  { s:'Which one is correct?', o:['I’ll wait until you finish.','I will wait unless you finish.','I will wait until you will finish.'] },
+  { s:'Which one is correct?', o:['As soon as I hear the news, I’ll text you.','As soon as I will know news, I will write you.','As soon as I know news, I write you.'] },
+  { s:'Which one is correct?', o:['It cost too much, so I made it myself.','Too much cost, so I made it myself.','It costed too much, so I made it myself.'], why:'cost — cost — cost.' },
+]);
+timed('Jt', '#exJ', [
+  { s:'Lately I ___ a lot.', o:['’m reading','read'] }, { s:'She ___ coffee in the evening.', o:['doesn’t drink','isn’t drinking'] },
+  { s:'___ to Japan?', o:['Have you ever been','Did you ever be'] }, { s:'I ___ him yesterday.', o:['saw','have seen'] },
+  { s:'I ___ my keys! I can’t get in.', o:['’ve lost','lost'] }, { s:'We’ve known each other ___ ten years.', o:['for','since'] },
+  { s:'I’ve lived here ___ 2019.', o:['since','for'] }, { s:'It ___ all day.', o:['’s been raining','rains'] },
+  { s:'She ___ three books.', o:['has written','has been writing'] }, { s:'If it ___ , we’ll stay home.', o:['rains','will rain'] },
+  { s:'I’ll wait ___ you finish.', o:['until','unless'] }, { s:'___ you hurry, you’ll be late.', o:['Unless','Until'] },
+], 90);
+typing('K', '#exK', [
+  T('Обычно я завтракаю дома, но сегодня я завтракаю в кафе. → I usually have breakfast at home, but today ___ in a cafe. (have)', "i'm having breakfast", 'i am having breakfast'),
+  T('Я никогда не водила машину. → I ___ a car. (never)', 'have never driven', "'ve never driven"),
+  T('Я окончила университет в 2018 году. → I ___ from university in 2018. (graduate)', 'graduated'),
+  T('Я вяжу эту шапку уже неделю. → I ___ this hat for a week. (knit)', 'have been knitting', "'ve been knitting"),
+  T('Если завтра будет холодно, я останусь дома. → If it ___ cold tomorrow, I’ll stay at home. (be)', 'is'),
+  T('Если ты не придёшь завтра, я тебя уволю! → If you don’t come tomorrow, I ___ you! (fire)', 'will fire', "'ll fire"),
+], 'type here');
+$('#resGrid').innerHTML = Object.keys(EX).map(k => `<div class="res"><div class="n" id="r${k}"></div><div class="l">${k} · ${EX[k]}</div></div>`).join('');
+refresh();
+})();
+</script>

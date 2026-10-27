@@ -1,5 +1,5 @@
 <meta charset="utf-8">
-<title>Alina’s Homework · Tenses & If</title>
+<title>Alina’s Homework · Perfect, Present &amp; If</title>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,600;0,9..144,800;1,9..144,500&family=Figtree:wght@400;500;600;700&display=swap">
 <style>
 :root{
@@ -142,7 +142,7 @@ select.g{font:inherit;font-weight:700;color:var(--teal);background:var(--teal-so
 
 <style>
 .tw .h{color:var(--muted);font-weight:600;font-style:italic}
-.tw input{width:14em}
+.tw input{width:15em}
 .tbar{display:flex;align-items:center;gap:12px;margin:0 0 12px;flex-wrap:wrap}
 .tbar .clock{font-family:"Fraunces",serif;font-size:26px;font-weight:800;min-width:3.2em;font-variant-numeric:tabular-nums}
 .tbar .clock.low{color:var(--red)}
@@ -151,90 +151,24 @@ select.g{font:inherit;font-weight:700;color:var(--teal);background:var(--teal-so
 .tbar .tip{font-size:13.5px;color:var(--muted);font-weight:600}
 .mc.locked{filter:blur(5px);pointer-events:none;user-select:none}
 .tag.speed{background:var(--red-soft);color:var(--red)}
-.cheat{background:var(--surface);border:2px solid var(--teal);border-radius:18px;padding:14px 18px;margin:0 0 14px}
-.cheat h4{margin:0 0 8px;font-family:"Fraunces",serif;font-size:19px;color:var(--teal)}
-.cheat table{width:100%;border-collapse:collapse;font-size:14.5px}
-.cheat td,.cheat th{padding:7px 8px;border-top:1px solid var(--line);vertical-align:top;text-align:left}
-.cheat th{border-top:0;color:var(--muted);font-size:13px}
-.cheat td:first-child{font-weight:800;white-space:nowrap}
-.cheat b{color:var(--teal)}
-.cheat .warn{margin-top:8px;background:var(--red-soft);border-radius:10px;padding:8px 12px;font-size:14px;font-weight:600}
-.task{background:var(--teal-soft);border-radius:14px;padding:12px 16px;line-height:1.7;font-weight:600}
 </style>
 <div class="bar"><div class="bar-in">
-  <div class="bar-t">Alina’s Homework · Tenses & If</div>
+  <div class="bar-t">Alina · Perfect, Present &amp; If</div>
   <div class="prog">Answered <b id="topProg">0</b></div>
 </div></div>
 
 <main class="wrap">
 <header class="hello">
-  <h1>Hello, <em>Алина!</em></h1>
+  <h1>Hello, <em>Alina!</em></h1>
   <div class="note">
-    <p>Перед каждой частью — шпаргалка: сначала прочитай её, вспомни правило, потом делай задания. Домашка по правилам, которые мы повторяли: Present Simple / Continuous, Present Perfect / Past Simple, Present Perfect Continuous и First conditional. Многие предложения — твои же с урока 😉</p>
-    <p>На каждый вопрос — одна попытка. Не перезагружай страницу. В конце пришли мне в Телеграм скрин с результатами.</p>
+    <p>Одно задание на всё, что повторили на уроке: Present Perfect / Past Simple, Present Perfect Continuous, Present Simple / Present Continuous и First conditional (if, when, as soon as, until, before). Поставь глагол из скобок в правильную форму и впиши. Если в скобках есть not — сделай отрицание.</p>
+    <p>Enter или Check. Не перезагружай страницу, иначе ответы сбросятся. В конце пришли скрин с результатом.</p>
   </div>
 </header>
 
-<div class="part"><span>Part 1</span><b>Present Simple or Continuous?</b></div>
+<div class="part"><span>Homework</span><b>Put the verb in the correct form ✍️</b></div>
 <section class="sec">
-  <div class="cheat"><h4>📌 Present Simple vs Present Continuous</h4><table>
-<tr><th>Время</th><th>Когда</th><th>Пример</th></tr>
-<tr><td>Present Simple</td><td>привычка, регулярно, факт<br><i>usually, always, every day, never</i></td><td>I <b>usually work</b> at the office.<br>Water <b>boils</b> at 100°.</td></tr>
-<tr><td>Present Continuous</td><td>1) прямо сейчас<br>2) <b>временная ситуация</b> около момента речи<br><i>now, this week, this month, lately, these days</i></td><td>Shh! The baby <b>is sleeping</b>.<br>…but <b>this week</b> I<b>’m working</b> from home.<br><b>Lately</b> I<b>’m reading</b> a lot.</td></tr>
-</table><div class="warn">⚠️ Глаголы состояния — без -ing: know, understand, love, like, want, need, believe. <i>I understand</i>, не <s>I’m understanding</s>.</div></div>
-  <div class="block"><div class="bl-head"><div><span class="tag">Exercise A</span><h3>Usually… but this week…</h3><p>Привычка или временная ситуация «в этот период»?</p></div><span class="score" id="scA"></span></div><ol class="mc" id="exA"></ol></div>
-  <div class="block"><div class="bl-head"><div><span class="tag">Exercise B</span><h3>Write the verb</h3><p>Впиши глагол в нужной форме. Подсказка в скобках. Enter или Check.</p></div><span class="score" id="scB"></span></div><ol class="tw" id="exB"></ol></div>
-</section>
-
-<div class="part"><span>Part 2</span><b>Present Perfect or Past Simple?</b></div>
-<section class="sec">
-  <div class="cheat"><h4>📌 Present Perfect vs Past Simple</h4><table>
-<tr><th>Время</th><th>Когда</th><th>Пример</th></tr>
-<tr><td>Present Perfect<br><i>have / has + V3</i></td><td>1) <b>опыт</b> (когда — не важно)<br>2) <b>результат</b> сейчас<br>3) действие длится до сих пор (глаголы состояния) + <b>since / for</b><br><i>ever, never, already, just, yet, this week</i></td><td>I<b>’ve been to</b> Turkey.<br>I<b>’ve lost</b> my keys — I can’t get in.<br>We<b>’ve known</b> each other <b>for</b> 10 years.<br>She <b>hasn’t called yet</b>. I<b>’ve just got</b> home.</td></tr>
-<tr><td>Past Simple<br><i>V2 / did</i></td><td>закончено, есть <b>точное время</b><br><i>yesterday, in 2020, ago, last year, this morning (прошло), When…?</i></td><td>I <b>broke</b> my leg <b>in 2020</b>.<br><b>When did</b> you start your job?</td></tr>
-</table><div class="warn">⚠️ <b>been to</b> London (побывать) · <b>since</b> 2019 (с момента) · <b>for</b> 10 years (в течение) · home — без to: <i>I’ve just got <b>home</b></i></div></div>
-  <div class="block"><div class="bl-head"><div><span class="tag">Exercise C</span><h3>Experience, result or exact time?</h3></div><span class="score" id="scC"></span></div><ol class="mc" id="exC"></ol></div>
-  <div class="block"><div class="bl-head"><div><span class="tag">Exercise D</span><h3>Complete the sentences</h3><p>Подсказка в скобках.</p></div><span class="score" id="scD"></span></div><ol class="tw" id="exD"></ol></div>
-</section>
-
-<div class="part"><span>Part 3</span><b>Present Perfect Continuous</b></div>
-<section class="sec">
-  <div class="cheat"><h4>📌 Present Perfect Continuous</h4><table>
-<tr><th>Форма</th><th>Когда</th><th>Пример</th></tr>
-<tr><td>have / has been + -ing</td><td>1) процесс начался в прошлом и <b>длится до сих пор</b> — важна <b>длительность</b> (how long, for, since)<br>2) процесс недавно закончился, видны <b>«следы»</b></td><td>I<b>’ve been reading</b> this book <b>for a year</b>.<br>Your hands are dirty — what <b>have you been doing</b>?</td></tr>
-<tr><td>have / has + V3</td><td><b>результат, количество</b> (how many, how much, so far)</td><td>I<b>’ve read 500 pages</b>.<br>She <b>has written</b> three books.</td></tr>
-</table><div class="warn">⚠️ how long / for / since + процесс → <b>been + -ing</b> · how many / сколько сделано → <b>have + V3</b> · write → wrote → <b>written</b></div></div>
-  <div class="block"><div class="bl-head"><div><span class="tag">Exercise E</span><h3>How long or how many?</h3><p>Процесс и длительность → have been + -ing. Результат и количество → have + V3.</p></div><span class="score" id="scE"></span></div><ol class="mc" id="exE"></ol></div>
-  <div class="block"><div class="bl-head"><div><span class="tag">Exercise F</span><h3>Write it</h3><p>Подсказка в скобках.</p></div><span class="score" id="scF"></span></div><ol class="tw" id="exF"></ol></div>
-</section>
-
-<div class="part"><span>Part 4</span><b>First conditional</b></div>
-<section class="sec">
-  <div class="cheat"><h4>📌 First conditional</h4><table>
-<tr><th>Часть</th><th>Время</th><th>Пример</th></tr>
-<tr><td>If / when / as soon as / before / until / unless …</td><td><b>Present Simple</b> (без will!)</td><td><b>If it rains</b> tomorrow,</td></tr>
-<tr><td>главная часть</td><td><b>will + V</b></td><td>we<b>’ll stay</b> at home.</td></tr>
-</table><table style="margin-top:8px">
-<tr><td>unless</td><td>= if … not</td><td><b>Unless</b> you hurry, you’ll be late. = If you don’t hurry…</td></tr>
-<tr><td>until</td><td>пока не (до момента)</td><td>I’ll wait <b>until</b> you finish.</td></tr>
-<tr><td>as soon as</td><td>как только</td><td>I’ll text you <b>as soon as</b> I hear the news.</td></tr>
-<tr><td>before</td><td>перед тем как</td><td><b>Before</b> I leave, I’ll turn off the light.</td></tr>
-</table><div class="warn">⚠️ ✗ If it <s>will rain</s> · ✗ I’ll wait <s>unless</s> you finish (нужно until) · everybody <b>comes</b> (как he/she)</div></div>
-  <div class="block"><div class="bl-head"><div><span class="tag">Exercise G</span><h3>if, unless, until, as soon as, before</h3></div><span class="score" id="scG"></span></div><ol class="mc" id="exG"></ol></div>
-  <div class="block"><div class="bl-head"><div><span class="tag">Exercise H</span><h3>Finish the sentence</h3><p>Помни: после if / when / until / as soon as / before — без will.</p></div><span class="score" id="scH"></span></div><ol class="tw" id="exH"></ol></div>
-</section>
-
-<div class="part"><span>Part 5</span><b>Your mistakes 🔍</b></div>
-<section class="sec">
-  <div class="block"><div class="bl-head"><div><span class="tag">Exercise I</span><h3>Fix your own sentences</h3><p>Это фразы с нашего урока. Выбери правильный вариант.</p></div><span class="score" id="scI"></span></div><ol class="mc" id="exI"></ol></div>
-  <div class="block"><div class="bl-head"><div><span class="tag speed">Exercise J ⏱ 1:30</span><h3>Speed round</h3><p>Все темы вперемешку. Нажми Start — у тебя 90 секунд. Что не успеешь — засчитается как ошибка.</p></div><span class="score" id="scJt"></span></div>
-    <div class="tbar"><button id="goJ">Start ⏱</button><span class="clock" id="ckJ">1:30</span><span class="tip" id="tpJ"></span></div>
-    <ol class="mc locked" id="exJ"></ol></div>
-</section>
-
-<div class="part"><span>Part 6</span><b>Translate ✍️</b></div>
-<section class="sec">
-  <div class="block"><div class="bl-head"><div><span class="tag">Exercise K</span><h3>Say it in English</h3><p>Переведи нужную часть. Подсказка в скобках.</p></div><span class="score" id="scK"></span></div><ol class="tw" id="exK"></ol></div>
+  <div class="block"><div class="bl-head"><div><span class="tag">Exercise A</span><h3>Open the brackets</h3><p>Впиши только пропущенные слова.</p></div><span class="score" id="scA"></span></div><ol class="tw" id="exA"></ol></div>
 </section>
 
 <section class="results">
@@ -254,7 +188,7 @@ const sv = inner => `<svg viewBox="0 0 120 90" role="img" aria-hidden="true">${i
 const INK = '#1F2328';
 
 /* ---------- scoring ---------- */
-const EX = { A:'PS or PC?', B:'Write the verb', C:'Perfect or Past?', D:'Complete', E:'How long / how many?', F:'Write it', G:'if / unless / until', H:'Finish the sentence', I:'Your mistakes', Jt:'Speed round ⏱', K:'Translate' };
+const EX = { A:'Open the brackets' };
 const TOTAL = {}, score = {}, done = {};
 Object.keys(EX).forEach(k => { score[k] = 0; done[k] = 0; });
 function refresh(){
@@ -268,7 +202,7 @@ window.addEventListener('beforeunload', e => { if (Object.values(done).some(Bool
 
 /* one-attempt multiple choice. items: {s, o:[correct first, ...distractors] | a index for fixed opts, f, why} */
 function mc(key, listId, items, fixed){
-  TOTAL[key] = (TOTAL[key] || 0) + items.length;
+  TOTAL[key] = items.length;
   const list = $(listId);
   const prepared = items.map(it => {
     if (fixed) return { ...it, opts: fixed, ans: it.a };
@@ -309,7 +243,7 @@ const G = (a, ...o) => ({ o, a });
 
 
 function typing(key, elId, items, ph){
-  TOTAL[key] = (TOTAL[key] || 0) + items.length;
+  TOTAL[key] = items.length;
   const norm = s => s.trim().toLowerCase().replace(/[’‘]/g, "'").replace(/\s+/g, ' ');
   $(elId).innerHTML = items.map(([a, w, b], n) => `<li data-n="${n}">${a}<input autocomplete="off" spellcheck="false" placeholder="${ph}" aria-label="answer" style="width:12em">${b}<button class="chk">Check</button><span class="ans" hidden></span></li>`).join('');
   function check(li){
@@ -324,107 +258,37 @@ function typing(key, elId, items, ph){
 }
 
 
-function timed(key, listId, items, secs){
-  mc(key, listId, items);
-  const list = $(listId), btn = $('#go' + key[0]), ck = $('#ck' + key[0]), tp = $('#tp' + key[0]); let left = secs, id = null;
-  const fmt = s => `${Math.floor(s / 60)}:${String(s % 60).padStart(2, '0')}`;
-  const stop = () => { clearInterval(id); id = null; list.querySelectorAll('li').forEach(li => { if (li.classList.contains('ok') || li.classList.contains('bad')) return; li.classList.add('bad'); li.querySelectorAll('.opt').forEach(x => x.disabled = true); done[key]++; }); refresh(); tp.textContent = `Время вышло! ${score[key]} / ${items.length}`; };
-  list.addEventListener('click', () => setTimeout(() => { if (id && [...list.querySelectorAll('li')].every(li => li.classList.contains('ok') || li.classList.contains('bad'))){ clearInterval(id); id = null; tp.textContent = `Готово за ${secs - left} сек! ${score[key]} / ${items.length}`; } }, 0));
-  btn.addEventListener('click', () => { btn.disabled = true; list.classList.remove('locked'); id = setInterval(() => { left--; ck.textContent = fmt(left); ck.classList.toggle('low', left <= 10); if (left <= 0) stop(); }, 1000); });
-}
-
-const T = (s, ...ans) => { const [a, b] = s.split('___'); return [a, ans.map(x => x.toLowerCase().replace(/’/g, "'")), b.replace(/\(([^)]*)\)/, '<span class="h">($1)</span>')]; };
-mc('A', '#exA', [
-  { s:'I usually work at the office, but this week I ___ from home.', o:['’m working','work','worked'] },
-  { s:'She always ___ the bus to work.', o:['takes','is taking','take'] },
-  { s:'I usually cook dinner, but today I’m tired, so I ___ food.', o:['’m ordering','order','ordered'] },
-  { s:'Lately I ___ a lot of books.', o:['’m reading','read','reads'], why:'lately / these days — период около момента речи → Continuous.' },
-  { s:'I ___ what you mean.', o:['understand','’m understanding','understanding'], why:'understand — глагол состояния, без -ing.' },
-  { s:'This week I ___ my flat because I have a lot of work.', o:['’m not cleaning','don’t clean','not clean'] },
-]);
-typing('B', '#exB', [
-  T('These days I ___ a hat for myself. (knit)', "am knitting", "'m knitting"),
-  T('My husband never ___ . (cook)', 'cooks'),
-  T('Be quiet! The baby ___ . (sleep)', 'is sleeping', "'s sleeping"),
-  T('Why ___ at me like that? (you / look)', 'are you looking'),
-  T('We ___ the kitchen at the moment. (renovate)', 'are renovating', "'re renovating"),
-  T('How often ___ to the gym? (you / go)', 'do you go'),
-], 'type here');
-mc('C', '#exC', [
-  { s:'___ to London?', o:['Have you ever been','Have you ever been in','Did you ever go in'], why:'Опыт: have been <b>to</b> (побывать где-то).' },
-  { s:'I ___ my leg in 2020.', o:['broke','have broken','have broke'], why:'Точное время (in 2020) → Past Simple.' },
-  { s:'I ___ my leg, so I can’t walk now.', o:['have broken','broke','break'], why:'Результат сейчас → Present Perfect.' },
-  { s:'I ___ a great breakfast this morning.', o:['cooked','have cooked','have cook'], why:'this morning (утро прошло) → Past Simple.' },
-  { s:'I ___ this film twice. It’s great!', o:['have seen','saw','have saw'] },
-  { s:'We ___ each other for ten years.', o:['have known','know','knew'], why:'know — состояние, действие длится до сих пор → Present Perfect + for.' },
-]);
-typing('D', '#exD', [
-  T('She ___ me yet. (not / call)', "hasn't called", 'has not called'),
-  T('I ___ home! (just / come)', 'have just come', "'ve just come", 'have just got', "'ve just got"),
-  T('I ___ a car. (never / drive)', 'have never driven', "'ve never driven"),
-  T('I ___ my hair! Do you like it? (dye)', 'have dyed', "'ve dyed"),
-  T('I ___ this guy since 2019. (love)', 'have loved', "'ve loved"),
-  T('Last year we ___ to Turkey. (go)', 'went'),
-  T('When ___ your new job? (you / start)', 'did you start'),
-  T('___ your homework yet? (you / do)', 'have you done'),
-], 'type here');
-mc('E', '#exE', [
-  { s:'I ___ this book for a year, and I still haven’t finished it.', o:['have been reading','have read','read'] },
-  { s:'I ___ 500 pages so far.', o:['have read','have been reading','am reading'] },
-  { s:'She ___ three books.', o:['has written','has been writing','has wrote'] },
-  { s:'Your hands are dirty! What ___ ?', o:['have you been doing','have you done','did you do'] },
-  { s:'I ___ tennis for ten years.', o:['have been playing','am playing','play'] },
-  { s:'It ___ all day — everything is wet.', o:['has been raining','has rained','rains'] },
-]);
-typing('F', '#exF', [
-  T('I ___ the house for an hour. I’m so tired! (clean)', 'have been cleaning', "'ve been cleaning"),
-  T('We ___ the flat for six months. (renovate)', 'have been renovating', "'ve been renovating"),
-  T('He ___ 20 pages so far. (read)', 'has read', "'s read"),
-  T('How long ___ English? (you / learn)', 'have you been learning'),
-  T('I ___ in this company for ten years. (work)', 'have been working', "'ve been working", 'have worked', "'ve worked"),
-  T('How many cups of coffee ___ today? (you / drink)', 'have you drunk', 'have you had'),
-], 'type here');
-mc('G', '#exG', [
-  { s:'I’ll wait ___ you finish.', o:['until','unless','if'], why:'until — пока не (до момента). unless = if … not.' },
-  { s:'___ I leave, I’ll turn off the light.', o:['Before','Unless','Until'] },
-  { s:'___ I hear the news, I’ll text you.', o:['As soon as','Unless','Until'] },
-  { s:'___ you hurry, you’ll miss the bus.', o:['Unless','Until','As soon as'], why:'Unless you hurry = If you don’t hurry.' },
-  { s:'If the weather ___ nice, we’ll go to the park.', o:['is','will be','would be'] },
-  { s:'We’ll start when everybody ___ .', o:['comes','will come','come'], why:'everybody — как he/she → -s.' },
-]);
-typing('H', '#exH', [
-  T('If I ___ time, I’ll help you. (have)', 'have'),
-  T('If she ___ , I’ll go home. (come)', 'comes'),
-  T('If I don’t eat, I ___ ! (faint)', 'will faint', "'ll faint"),
-  T('If you don’t study, you ___ the exam. (fail)', 'will fail', "'ll fail"),
+const T = (s, ...ans) => { const [a, b] = s.split('___'); const all = ans.flatMap(x => { x = x.toLowerCase(); const v = [x]; [["have not ", "haven’t "], ["has not ", "hasn’t "], ["am ", "’m "], ["is ", "’s "], ["have ", "’ve "], ["has ", "’s "], ["had not ", "hadn’t "], ["do not ", "don’t "], ["cannot ", "can’t "], ["will ", "’ll "], ["might not ", "mightn’t "]].forEach(([l, s2]) => v.slice().forEach(y => { if (y.startsWith(l)) v.push(s2.trim() + ' ' + y.slice(l.length)); })); return v; }); return [a, [...new Set(all.flatMap(x => [x, x.replace(/’/g, "'")]))], b.replace(/\(([^)]*)\)/, '<span class="h">($1)</span>')]; };
+typing('A', '#exA', [
+  T('I ___ university in 2015. (finish)', 'finished'),
+  T('___ to London? (you / ever / be)', 'have you ever been'),
+  T('I ___ oysters. (never / try)', 'have never tried'),
+  T('She ___ three books last year. (write)', 'wrote'),
+  T('He ___ . Call him later. (just / leave)', 'has just left'),
+  T('When ___ on vacation last time? (you / go)', 'did you go'),
+  T('Today I ___ him three times, but he isn’t answering. (call)', 'have called', 'have already called'),
+  T('___ this TV show yet? (you / watch)', 'have you watched'),
+  T('I ___ English for three years. (learn)', 'have been learning'),
+  T('Lately I ___ my phone less. (use)', 'have been using'),
+  T('Lately I ___ much. (not / sleep)', 'have not been sleeping'),
+  T('Your eyes are red. ___ ? (you / cry)', 'have you been crying'),
+  T('I ___ for you for forty minutes! (wait)', 'have been waiting'),
+  T('Why are you covered in flour? — I ___ a pie. (bake)', 'have been baking'),
+  T('I ___ two scarves this month. (knit)', 'have knitted', 'have knit'),
+  T('We ___ each other since school. (know)', 'have known'),
+  T('You ___ on your phone all evening! (sit)', 'have been sitting'),
+  T('How long ___ to the gym? (you / go)', 'have you been going'),
+  T('She usually ___ to work. (walk)', 'walks'),
+  T('Today it’s raining, so she ___ a taxi. (take)', 'is taking'),
+  T('This week I ___ at 6 o’clock because I have a lot of work. (get up)', 'am getting up'),
+  T('Now I ___ to say no to people. (learn)', 'am learning'),
+  T('If the weather ___ bad, we will stay at home. (be)', 'is'),
   T('I’ll call you as soon as I ___ . (arrive)', 'arrive'),
-  T('If I have money, I ___ to Rome. (fly)', 'will fly', "'ll fly"),
-], 'type here');
-mc('I', '#exI', [
-  { s:'Which one is correct?', o:['Usually I work at the office, but this week I’m working at home.','Usually I work at the office, but this week I work at home.','Usually I’m working at the office, but this week I work at home.'] },
-  { s:'Which one is correct?', o:['She hasn’t called me yet.','She has not still called me.','She didn’t call me yet still.'] },
-  { s:'Which one is correct?', o:['I’ve just got home.','I have just came at home.','I have just come to home.'] },
-  { s:'Which one is correct?', o:['I’ve been reading this book for a year.','I have read this book for one year.','I am reading this book for a year.'] },
-  { s:'Which one is correct?', o:['Before I leave, I’ll turn off the light.','Before I am leaving, I would turn on the light.','Before I will leave, I turn off the light.'] },
-  { s:'Which one is correct?', o:['I’ll wait until you finish.','I will wait unless you finish.','I will wait until you will finish.'] },
-  { s:'Which one is correct?', o:['As soon as I hear the news, I’ll text you.','As soon as I will know news, I will write you.','As soon as I know news, I write you.'] },
-  { s:'Which one is correct?', o:['It cost too much, so I made it myself.','Too much cost, so I made it myself.','It costed too much, so I made it myself.'], why:'cost — cost — cost.' },
-]);
-timed('Jt', '#exJ', [
-  { s:'Lately I ___ a lot.', o:['’m reading','read'] }, { s:'She ___ coffee in the evening.', o:['doesn’t drink','isn’t drinking'] },
-  { s:'___ to Japan?', o:['Have you ever been','Did you ever be'] }, { s:'I ___ him yesterday.', o:['saw','have seen'] },
-  { s:'I ___ my keys! I can’t get in.', o:['’ve lost','lost'] }, { s:'We’ve known each other ___ ten years.', o:['for','since'] },
-  { s:'I’ve lived here ___ 2019.', o:['since','for'] }, { s:'It ___ all day.', o:['’s been raining','rains'] },
-  { s:'She ___ three books.', o:['has written','has been writing'] }, { s:'If it ___ , we’ll stay home.', o:['rains','will rain'] },
-  { s:'I’ll wait ___ you finish.', o:['until','unless'] }, { s:'___ you hurry, you’ll be late.', o:['Unless','Until'] },
-], 90);
-typing('K', '#exK', [
-  T('Обычно я завтракаю дома, но сегодня я завтракаю в кафе. → I usually have breakfast at home, but today ___ in a cafe. (have)', "i'm having breakfast", 'i am having breakfast'),
-  T('Я никогда не водила машину. → I ___ a car. (never)', 'have never driven', "'ve never driven"),
-  T('Я окончила университет в 2018 году. → I ___ from university in 2018. (graduate)', 'graduated'),
-  T('Я вяжу эту шапку уже неделю. → I ___ this hat for a week. (knit)', 'have been knitting', "'ve been knitting"),
-  T('Если завтра будет холодно, я останусь дома. → If it ___ cold tomorrow, I’ll stay at home. (be)', 'is'),
-  T('Если ты не придёшь завтра, я тебя уволю! → If you don’t come tomorrow, I ___ you! (fire)', 'will fire', "'ll fire"),
+  T('I won’t go to bed until I ___ this episode. (finish)', 'finish'),
+  T('We won’t leave until you ___ me the truth. (tell)', 'tell'),
+  T('If you ___ , you will be late. (not / hurry)', 'do not hurry'),
+  T('If you use your phone less, you ___ better. (sleep)', 'will sleep'),
+  T('Before I ___ , I will turn off the light. (leave)', 'leave'),
 ], 'type here');
 $('#resGrid').innerHTML = Object.keys(EX).map(k => `<div class="res"><div class="n" id="r${k}"></div><div class="l">${k} · ${EX[k]}</div></div>`).join('');
 refresh();
