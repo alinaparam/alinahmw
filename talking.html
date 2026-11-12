@@ -1,0 +1,102 @@
+<!doctype html>
+<html lang="ru">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>What If We Stopped Talking?</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,600;0,9..144,800;1,9..144,500&family=Figtree:wght@400;500;600;700;800&display=swap">
+<style>
+:root{--bg:#F6F1E9;--surface:#FFFDF9;--ink:#22201C;--muted:#6F675D;--line:#E6DDCF;--acc:#E2603A;--acc-soft:#FBE3D8;--acc-ink:#A63E1E;--sea:#2C7A7B;--sea-soft:#DDEFEE;--hi:#FFE7A3;--pop:#22201C;--pop-ink:#FFFDF9}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){color-scheme:dark;--bg:#16130F;--surface:#201C17;--ink:#F1EBE2;--muted:#B3A99C;--line:#3A332B;--acc:#F2845F;--acc-soft:#3E2419;--acc-ink:#FFC2AA;--sea:#6CC3C2;--sea-soft:#163332;--hi:#5A4716;--pop:#F1EBE2;--pop-ink:#16130F}}
+:root[data-theme="dark"]{color-scheme:dark;--bg:#16130F;--surface:#201C17;--ink:#F1EBE2;--muted:#B3A99C;--line:#3A332B;--acc:#F2845F;--acc-soft:#3E2419;--acc-ink:#FFC2AA;--sea:#6CC3C2;--sea-soft:#163332;--hi:#5A4716;--pop:#F1EBE2;--pop-ink:#16130F}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);font:18px/1.7 Figtree,system-ui,sans-serif}
+.wrap{max-width:780px;margin:0 auto;padding:32px 16px 90px}
+.kicker{font:800 13px Figtree;letter-spacing:.16em;text-transform:uppercase;color:var(--acc)}
+h1{font-family:Fraunces,serif;font-weight:800;font-size:clamp(36px,7vw,60px);line-height:1.02;margin:8px 0 12px}
+h1 i{font-weight:500;color:var(--acc)}
+.lead{font-size:20px;color:var(--muted);margin:0 0 22px}
+.chat{display:grid;gap:8px;margin:0 0 26px;max-width:460px}
+.chat div{padding:10px 14px;border-radius:16px;font-weight:700;font-size:15.5px;line-height:1.4}
+.chat .me{background:var(--sea-soft);color:var(--sea);border-bottom-right-radius:4px;justify-self:end}
+.chat .bot{background:var(--surface);border:1px solid var(--line);border-bottom-left-radius:4px;justify-self:start}
+.week{display:none}
+.week div{border-radius:14px;padding:12px 4px;text-align:center;font-weight:800;font-size:15px;background:var(--sea-soft);color:var(--sea)}
+.week div small{display:block;font-weight:600;font-size:11.5px;opacity:.8;letter-spacing:.04em}
+.week div.off{background:var(--acc);color:#fff}
+.tip{display:flex;gap:10px;align-items:center;background:var(--surface);border:1px dashed var(--line);border-radius:14px;padding:10px 14px;font-size:15.5px;font-weight:600;color:var(--muted);margin-bottom:22px}
+article{background:var(--surface);border:1px solid var(--line);border-radius:24px;padding:30px clamp(18px,4vw,40px)}
+article p{margin:0 0 18px}
+article p:first-of-type::first-letter{font-family:Fraunces,serif;font-weight:800;font-size:64px;float:left;line-height:.85;margin:6px 10px 0 0;color:var(--acc)}
+blockquote{margin:6px 0 20px;padding:4px 0 4px 18px;border-left:4px solid var(--acc);font-family:Fraunces,serif;font-style:italic;font-size:21px;line-height:1.5}
+.w{cursor:pointer;border-radius:5px;transition:background .12s}
+.w:hover{background:var(--acc-soft)}
+.w.seen{background:var(--hi)}
+.w.ph{border-bottom:2px dotted var(--acc)}
+.w.on{background:var(--acc);color:#fff}
+#pop{position:absolute;z-index:20;max-width:280px;background:var(--pop);color:var(--pop-ink);border-radius:12px;padding:8px 12px;font-size:15.5px;font-weight:700;line-height:1.35;box-shadow:0 10px 30px rgba(0,0,0,.2);pointer-events:none}
+#pop small{display:block;font-weight:600;opacity:.65;font-size:13px}
+#pop[hidden]{display:none}
+section{margin-top:28px;background:var(--surface);border:1px solid var(--line);border-radius:24px;padding:24px clamp(18px,4vw,34px)}
+h2{font-family:Fraunces,serif;font-size:28px;margin:0 0 6px}
+.note{display:flex;gap:12px;align-items:center;background:var(--acc-soft);color:var(--acc-ink);border-radius:14px;padding:12px 16px;font-weight:700;margin:10px 0 16px}
+.note b{font-size:24px}
+ol.qs{margin:0;padding:0;list-style:none;counter-reset:q;display:grid;gap:10px}
+ol.qs li{counter-increment:q;display:flex;gap:12px;align-items:flex-start;background:var(--bg);border-radius:14px;padding:12px 14px;font-weight:700}
+ol.qs li::before{content:counter(q);flex:none;width:30px;height:30px;border-radius:50%;background:var(--sea);color:#fff;display:grid;place-items:center;font-size:14px;margin-top:1px}
+ol.qs li span{display:block;font-weight:600;color:var(--muted);font-size:15px;margin-top:2px}
+#mine{display:flex;flex-wrap:wrap;gap:6px;margin-top:10px}
+#mine span{background:var(--hi);border-radius:8px;padding:3px 10px;font-size:15px;font-weight:700}
+#mine span em{font-style:normal;font-weight:600;color:var(--muted)}
+.empty{color:var(--muted);font-size:15.5px}
+@media (max-width:560px){.week div{font-size:13px;padding:10px 2px}.week div small{display:none}body{font-size:17px}}
+</style>
+
+<div class="wrap">
+  <div class="kicker">B1 reading · people & technology</div>
+  <h1>What if we stopped <i>talking?</i></h1>
+  <p class="lead">More and more people share their problems with AI instead of friends. Is that a problem?</p>
+  <div class="chat"><div class="me">I had a terrible day 😞</div><div class="bot">🤖 I’m here for you. Tell me everything.</div><div class="me">Thanks… you’re better than people 🙃</div></div>
+  <div class="tip">👆 Нажми на любое слово — появится перевод. Слова с пунктиром — устойчивые выражения.</div>
+
+  <article id="art"></article>
+
+  <section>
+    <h2>Words you checked</h2>
+    <div class="empty" id="mineEmpty">Пока пусто. Слова, на которые ты нажмёшь, появятся здесь.</div>
+    <div id="mine"></div>
+  </section>
+
+  <section>
+    <h2>Let’s talk 🎙️</h2>
+    <div class="note"><b>🎤</b>Ответь на вопросы устно и пришли мне голосовые. 2–3 предложения на каждый вопрос — используй would 🙂</div>
+    <ol class="qs"><li><div>Do you ever share your problems with AI? Why / why not?<span>Иногда я… / I sometimes ask ChatGPT about…</span></div></li><li><div>If you were the manager in the story, what would you do?<span>If I were the manager, I would…</span></div></li><li><div>Would you rather text or call? Why?<span>I’d rather… because…</span></div></li><li><div>If you couldn’t use your phone for a week, what would you miss most?<span>If I couldn’t…, I would miss…</span></div></li><li><div>Do you agree that “talking to AI is like eating fast food”? Why?<span>I (don’t) agree, because…</span></div></li><li><div>If you could change one thing about how people communicate today, what would it be?<span>If I could change one thing, I would…</span></div></li></ol>
+  </section>
+</div>
+<div id="pop" hidden></div>
+
+<script>
+/* {phrase|translation} = выражение; остальные слова — из словаря */
+const TEXT = ["Last year, a young man {applied for|подал заявку на} a job at a tech company in London. The interview was online, and when it started, the manager couldn’t {believe her eyes|поверить своим глазам}: the candidate was wearing a mask that looked like a tomato. “I’m too shy to talk to people,” he explained. “{Would you mind|вы не против,} if I kept it on?” The interview {was over|закончилось} in two minutes.", "It sounds like a joke, but psychologists say that stories like this are {becoming more common|становятся всё чаще}. In recent surveys, many young adults say they would {rather|скорее} text than call, and some feel nervous when the phone rings. {More and more|всё больше и больше} people also {share their problems|делятся своими проблемами} with AI chatbots {instead of|вместо} friends.", "Why? A chatbot is always {available|доступен}, it never gets tired, and it never {judges|осуждает} you. “If I told my friends about my problems, they would worry or give me bad advice,” says Emma, 27. “ChatGPT just listens.”", "But scientists are {not so sure|не так уверены}. Our brains learned to communicate {face to face|лицом к лицу} over thousands of years. When we talk to a real person, we read their face, their voice and their {body language|язык тела}. If we only talked to machines, we would slowly {lose these skills|потерять эти навыки}, like a muscle that we never use.", "Imagine a world where everyone talked to AI instead of people. Would it be a better place? Maybe we would feel calmer {in the short term|в краткосрочной перспективе}. But we would {miss out on|упустить} something important. Real friends {disagree with|не соглашаются с} us, surprise us and sometimes tell us things we don’t want to hear. A machine that always agrees with you can’t really {help you grow|помочь тебе расти}.", ">“Talking to AI is like eating {fast food|фастфуд},” as one psychologist puts it. “It’s quick and easy, but if you ate it every day, you wouldn’t be healthy.”", "So what can we do? Experts suggest small steps: call a friend instead of texting, {put your phone away|убирать телефон} at dinner, and {say hello to|здороваться с} your neighbours. AI can be a useful tool, but it shouldn’t {take the place of|заменять} real people. {After all|в конце концов}, if nobody talked to each other, who would we share our good news with?"];
+const D = {"last": "прошлый", "year": "год", "a": "(артикль)", "young": "молодой", "man": "мужчина", "job": "работа", "at": "в", "tech": "технологическая", "company": "компания", "in": "в", "london": "Лондон", "the": "(артикль)", "interview": "собеседование", "was": "был(а)", "online": "онлайн", "and": "и", "when": "когда", "it": "это, оно", "started": "началось", "manager": "менеджер, руководитель", "couldn't": "не могла", "candidate": "кандидат", "wearing": "был одет в, носил", "mask": "маска", "that": "которая; что", "looked": "выглядела", "like": "как, похожа на", "tomato": "помидор", "i'm": "я", "too": "слишком", "shy": "стеснительный", "to": "чтобы; к", "talk": "разговаривать", "people": "люди", "he": "он", "explained": "объяснил", "if": "если", "i": "я", "kept": "оставил(а); сохранил", "on": "на (не снимать)", "two": "два", "minutes": "минуты", "sounds": "звучит", "joke": "шутка", "but": "но", "psychologists": "психологи", "say": "говорят", "stories": "истории", "this": "это, этот", "are": "являются", "recent": "недавние", "surveys": "опросы", "many": "многие", "adults": "взрослые", "they": "они", "would": "бы", "text": "переписываться, писать сообщения", "than": "чем", "call": "звонить", "some": "некоторые", "feel": "чувствуют (себя)", "nervous": "нервно", "phone": "телефон", "rings": "звонит", "also": "также", "ai": "искусственный интеллект (ИИ)", "chatbots": "чат-боты", "friends": "друзья", "why": "почему", "chatbot": "чат-бот", "is": "есть, является", "always": "всегда", "never": "никогда", "gets": "становится", "tired": "уставший", "you": "ты, тебя", "told": "рассказала", "my": "мои", "about": "о, про", "problems": "проблемы", "worry": "волноваться", "or": "или", "give": "давать", "me": "мне", "bad": "плохой", "advice": "совет", "says": "говорит", "emma": "Эмма (имя)", "chatgpt": "ChatGPT", "just": "просто", "listens": "слушает", "scientists": "учёные", "our": "наш", "brains": "мозг (мозги)", "learned": "научились", "communicate": "общаться", "over": "на протяжении", "thousands": "тысячи", "of": "(из)", "years": "лет", "we": "мы", "real": "настоящий", "person": "человек", "read": "читаем", "their": "их", "face": "лицо", "voice": "голос", "only": "только", "talked": "разговаривали", "machines": "машины", "slowly": "постепенно, медленно", "muscle": "мышца", "use": "используем", "imagine": "представь", "world": "мир", "where": "где", "everyone": "все", "instead": "вместо", "be": "быть", "better": "лучше", "place": "место", "maybe": "может быть", "calmer": "спокойнее", "something": "что-то", "important": "важное", "surprise": "удивляют", "sometimes": "иногда", "tell": "говорят", "things": "вещи", "don’t": "не", "don't": "не", "want": "хотим", "hear": "слышать", "machine": "машина", "agrees": "соглашается", "with": "с", "can’t": "не может", "can't": "не может", "really": "на самом деле, по-настоящему", "talking": "разговаривать, разговор", "eating": "есть, питаться", "one": "один", "psychologist": "психолог", "puts": "(выражает)", "as": "как", "it's": "это", "quick": "быстрый", "easy": "лёгкий", "ate": "ела", "every": "каждый", "day": "день", "wouldn't": "не был(а) бы", "healthy": "здоровый", "so": "итак, так", "what": "что", "can": "можем", "do": "делать", "experts": "эксперты", "suggest": "предлагают", "small": "маленькие", "steps": "шаги", "texting": "переписка, писать сообщения", "dinner": "ужин", "your": "твои", "neighbours": "соседи", "useful": "полезный", "tool": "инструмент", "shouldn’t": "не должен", "shouldn't": "не должен", "nobody": "никто", "each": "каждый", "other": "другой", "who": "кто", "share": "делиться", "friend": "друг, подруга", "us": "нас, нам", "good": "хорошие", "news": "новости"};
+const art = document.getElementById('art'); const pop = document.getElementById('pop');
+const esc = s => s.replace(/&/g,'&amp;').replace(/</g,'&lt;');
+function wordsHTML(s){ return s.replace(/[A-Za-z’'-]+|[0-9]+/g, w => { const k = w.toLowerCase().replace(/’s$|'s$/,'').replace(/’/g,"'"); const t = D[k]; return t ? `<span class="w" data-t="${t}">${w}</span>` : w; }); }
+art.innerHTML = TEXT.map(p => { const q = p.startsWith('>'); const body = (q ? p.slice(1) : p).split(/(\{[^}]+\})/).map(x => { if (x.startsWith('{')) { const [ph, tr] = x.slice(1, -1).split('|'); return `<span class="w ph" data-t="${tr}" data-p="1">${ph}</span>`; } return wordsHTML(x); }).join(''); return q ? `<blockquote>${body}</blockquote>` : `<p>${body}</p>`; }).join('');
+const seen = new Map();
+let cur = null;
+art.addEventListener('click', e => {
+  const w = e.target.closest('.w'); if (!w) return;
+  if (cur) cur.classList.remove('on');
+  if (cur === w && !pop.hidden) { pop.hidden = true; cur = null; return; }
+  cur = w; w.classList.add('on','seen');
+  pop.innerHTML = `${w.dataset.t}<small>${w.textContent}</small>`; pop.hidden = false;
+  const r = w.getBoundingClientRect(); const pw = pop.offsetWidth;
+  let x = r.left + scrollX + r.width / 2 - pw / 2; x = Math.max(8, Math.min(x, document.documentElement.clientWidth - pw - 8));
+  pop.style.left = x + 'px'; pop.style.top = (r.top + scrollY - pop.offsetHeight - 8) + 'px';
+  const key = w.textContent.toLowerCase();
+  if (!seen.has(key)) { seen.set(key, w.dataset.t); document.getElementById('mineEmpty').hidden = true;
+    const s = document.createElement('span'); s.innerHTML = `${esc(w.textContent)} <em>— ${esc(w.dataset.t)}</em>`; document.getElementById('mine').appendChild(s); }
+});
+document.addEventListener('click', e => { if (!e.target.closest('.w')) { pop.hidden = true; if (cur) cur.classList.remove('on'); cur = null; } });
+addEventListener('resize', () => { pop.hidden = true; });
+</script>
